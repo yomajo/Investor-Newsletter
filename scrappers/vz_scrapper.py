@@ -13,16 +13,15 @@ def get_category_main_article(content_container):
     main_cat_headline = content_container.find('div', class_='main-article').h2.a.text
     return [main_cat_headline, main_cat_url]
 
-def get_category_articles(content_container):
+def get_category_articles(content_container, appendable_output_list):
     '''returns list of main article headline and url from passed soup'''
-    func_output = []
     all_category_divs = content_container.findAll('div', class_='article')
     for article_div in all_category_divs:
         article_headline_raw = article_div.h2.a.text.strip()    
         article_headline = clean_headline(article_headline_raw)
         article_url = article_div.h2.a['href']
-        func_output.append([article_headline, article_url])
-    return func_output
+        cycle_output_as_list = [article_headline, article_url]
+        appendable_output_list.append(cycle_output_as_list)
 
 def clean_headline(headline):
     '''removes tabs, newline, other non-interest symbols'''
@@ -77,9 +76,8 @@ class VzScrapper():
             self.content_container = self.soup.find('div', class_='main')
 
             main_article_data = get_category_main_article(self.content_container)
-            rest_articles_data = get_category_articles(self.content_container)
             self.category_results.append(main_article_data)
-            self.category_results.append(rest_articles_data)
+            get_category_articles(self.content_container, self.category_results)
 
     def export_txt(self, output_data):
         '''write output contents to txt file'''
@@ -96,17 +94,16 @@ class VzScrapper():
         '''main method upon instance creation'''
         urls_list = self.get_urls()
         print(f'Collected category urls:\n{urls_list}')
-
         for url in urls_list:
             response = self.get_response(url)
             self.scrape_category(response)
             print('\nRESULTS FROM ONE CATEGORY-------------------BELOW-------------')
             print(self.category_results)
             print(f'\nServer response time: {response.elapsed.total_seconds()}')
-            print('sleeping before jumping to next category... ZZZzzzz...')
             # Exporting, now, in future, join from other categories:
             self.export_txt(self.category_results)
             # temp print output:
+            print('sleeping before jumping to next category... ZZZzzzz...')
             sleep(randint(10, 40)/10)
             break
 

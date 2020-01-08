@@ -30,4 +30,4 @@ To be added in the future
 
 ## Development
 
-Refer to: [Issues](https://github.com/yomajo/Investor-Newsletter/Issues)
+Refer to: [Issues](https://github.com/yomajo/investor-newsletter/issues)
