@@ -6,7 +6,7 @@ from configparser import ConfigParser
 def main():
     vz_scr = VzScrapper()
     vz_scr.run()
-    
+
     
 
 

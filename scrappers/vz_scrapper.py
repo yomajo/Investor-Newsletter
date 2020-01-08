@@ -1,15 +1,34 @@
 from bs4 import BeautifulSoup
 from configparser import ConfigParser
+from time import sleep
+from random import randint
 import requests
 import lxml
 
 
-def get_category_main_article(soup):
-    '''returns tuple of headline and url from passed soup'''
-    content_container = soup.find('div', class_='main')
+# Functions to extract data from soup and clean data
+def get_category_main_article(content_container):
+    '''returns list of main article headline and url from passed soup'''
     main_cat_url = content_container.find('div', class_='main-article').h2.a['href']
     main_cat_headline = content_container.find('div', class_='main-article').h2.a.text
-    return (main_cat_headline, main_cat_url)
+    return [main_cat_headline, main_cat_url]
+
+def get_category_articles(content_container):
+    '''returns list of main article headline and url from passed soup'''
+    func_output = []
+    all_category_divs = content_container.findAll('div', class_='article')
+    for article_div in all_category_divs:
+        article_headline_raw = article_div.h2.a.text.strip()    
+        article_headline = clean_headline(article_headline_raw)
+        article_url = article_div.h2.a['href']
+        func_output.append([article_headline, article_url])
+    return func_output
+
+def clean_headline(headline):
+    '''removes tabs, newline, other non-interest symbols'''
+    repl_headline = headline.replace('\tPremium','').replace('\xa0','').replace('\r', '').replace('\n', '').replace('\t', '')
+    cleaned_headline = repl_headline.strip()
+    return cleaned_headline
 
 
 class VzScrapper():
@@ -41,8 +60,8 @@ class VzScrapper():
             urls_list.append(self.base_url + cat) 
         return urls_list
 
-    def get_valid_response(self, url):
-        '''checks passsed url for returns'''
+    def get_response(self, url):
+        '''checks passsed url and returns response if available'''
         r = requests.get(url, timeout=5)
         if r.status_code == 200:
             return r
@@ -55,27 +74,42 @@ class VzScrapper():
         if response != None:
             self.category_results = []
             self.soup = BeautifulSoup(response.text, 'lxml')
-            main_article_data = get_category_main_article(self.soup)
-            self.category_results.append(main_article_data)
+            self.content_container = self.soup.find('div', class_='main')
 
+            main_article_data = get_category_main_article(self.content_container)
+            rest_articles_data = get_category_articles(self.content_container)
+            self.category_results.append(main_article_data)
+            self.category_results.append(rest_articles_data)
+
+    def export_txt(self, output_data):
+        '''write output contents to txt file'''
+        outputfile = 'Output/headlines.txt'
+        with open(outputfile, 'w') as f:
+            for idx, headline_info in enumerate(output_data):
+                # Handling new line for first item
+                if idx:
+                    f.writelines(f'\n{str(headline_info[0])} {str(headline_info[1])}')
+                else:
+                    f.writelines(f'{str(headline_info[0])} {str(headline_info[1])}')
+    
     def run(self):
         '''main method upon instance creation'''
         urls_list = self.get_urls()
         print(f'Collected category urls:\n{urls_list}')
 
         for url in urls_list:
-            response = self.get_valid_response(url)
+            response = self.get_response(url)
             self.scrape_category(response)
-
-            # temp print output:
+            print('\nRESULTS FROM ONE CATEGORY-------------------BELOW-------------')
             print(self.category_results)
-
+            print(f'\nServer response time: {response.elapsed.total_seconds()}')
+            print('sleeping before jumping to next category... ZZZzzzz...')
+            # Exporting, now, in future, join from other categories:
+            self.export_txt(self.category_results)
+            # temp print output:
+            sleep(randint(10, 40)/10)
             break
-
-
-
 
 
 if  __name__ == '__main__':
     pass
-
