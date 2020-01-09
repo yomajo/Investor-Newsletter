@@ -5,7 +5,7 @@ from random import randint
 import os
 import requests
 import lxml
-
+import csv
 
 # Functions to extract data from soup and clean data
 def get_category_main_article(content_container):
@@ -37,7 +37,7 @@ class VzScrapper():
     
     base_url = 'https://www.vz.lt/'
     config_file = 'scrappers/config.ini'
-    outputfile = 'Output/headlines.txt'
+    outputfile = 'Output/vz_headlines.csv'
 
     def __init__(self):
         pass
@@ -81,20 +81,12 @@ class VzScrapper():
             self.category_results.append(main_article_data)
             get_category_articles(self.content_container, self.category_results)
 
-    def export_txt(self, output_data, write_append_option):
-        '''write output contents to txt file'''
-        with open(self.outputfile, write_append_option) as f:
-            for idx, headline_info in enumerate(output_data):
-                # Handling new line for first item
-                if idx:
-                    # Not a first line, adding starting in newline
-                    f.writelines(f'\n{str(headline_info[0])} {str(headline_info[1])}')
-                elif write_append_option == 'a':
-                    # Appending txt file. First line (idx==0), so new line for new entry before:
-                    f.writelines(f'\n{str(headline_info[0])} {str(headline_info[1])}')
-                else:
-                    # First line in txt file:
-                    f.writelines(f'{str(headline_info[0])} {str(headline_info[1])}')
+    def export_csv(self, output_filename, output_data, w_a_option):
+        '''write output contents to csv file'''
+        with open(output_filename, w_a_option, newline='') as f:
+            csv_writer = csv.writer(f, delimiter='\t')
+            for headline_info in output_data:
+                csv_writer.writerow(headline_info)
     
     def write_or_append_output(self, txt_filepath):
         '''Check if output file exists and return according option for with-open context manager'''
@@ -107,21 +99,24 @@ class VzScrapper():
         '''main method upon instance creation'''
         urls_list = self.get_urls()
         print(f'Collected category urls:\n{urls_list}')
+        self.unique_headlines_list = []
         for url in urls_list:
             print('-----------New category request---------')
             response = self.get_response(url)
             self.scrape_category(response)
+            # Transfer from category to common variable holding unique records in this website
+            print('Writing category headlines infomation to common variable')
+            for headline_info in self.category_results:
+                if headline_info not in self.unique_headlines_list:
+                    self.unique_headlines_list.append(headline_info)
 
-            # print('\nRESULTS FROM ONE CATEGORY-------------------BELOW-------------')
-            # print(self.category_results)
             print(f'\nServer response time: {response.elapsed.total_seconds()}')
-            # Exporting, now, in future, join from other categories:
-            w_a_option = self.write_or_append_output(self.outputfile)
-            self.export_txt(self.category_results, w_a_option)
-            # temp print output:
             print('sleeping before jumping to next category... ZZZzzzz...')
             sleep(randint(10, 40)/10)
-            # break
+
+        # Exporting scrape results after loop through categories:
+        w_a_option = self.write_or_append_output(self.outputfile)
+        self.export_csv(self.outputfile, self.unique_headlines_list, w_a_option)
 
 if  __name__ == '__main__':
     pass
