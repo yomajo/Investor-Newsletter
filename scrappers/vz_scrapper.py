@@ -88,9 +88,9 @@ class VzScrapper():
             for headline_info in output_data:
                 csv_writer.writerow(headline_info)
     
-    def write_or_append_output(self, txt_filepath):
+    def write_or_append_output(self, output_filepath):
         '''Check if output file exists and return according option for with-open context manager'''
-        if os.path.exists(txt_filepath):
+        if os.path.exists(output_filepath):
             return 'a'
         else:
             return 'w'
