@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 from configparser import ConfigParser
 from time import sleep
 from random import randint
+import os
 import requests
 import lxml
 
@@ -36,6 +37,7 @@ class VzScrapper():
     
     base_url = 'https://www.vz.lt/'
     config_file = 'scrappers/config.ini'
+    outputfile = 'Output/headlines.txt'
 
     def __init__(self):
         pass
@@ -43,7 +45,7 @@ class VzScrapper():
     def get_categs_list(self):
         '''return list of categories (string as part of url)'''
         categs = []
-        # Read contents under class section in config.ini
+        # Read contents under class named section in config.ini
         config = ConfigParser()
         config.read(self.config_file)        
         raw_cls_config = config.items(f'{self.__class__.__name__.upper()}')
@@ -61,7 +63,7 @@ class VzScrapper():
 
     def get_response(self, url):
         '''checks passsed url and returns response if available'''
-        r = requests.get(url, timeout=5)
+        r = requests.get(url, timeout=10)
         if r.status_code == 200:
             return r
         else:
@@ -79,34 +81,47 @@ class VzScrapper():
             self.category_results.append(main_article_data)
             get_category_articles(self.content_container, self.category_results)
 
-    def export_txt(self, output_data):
+    def export_txt(self, output_data, write_append_option):
         '''write output contents to txt file'''
-        outputfile = 'Output/headlines.txt'
-        with open(outputfile, 'w') as f:
+        with open(self.outputfile, write_append_option) as f:
             for idx, headline_info in enumerate(output_data):
                 # Handling new line for first item
                 if idx:
+                    # Not a first line, adding starting in newline
+                    f.writelines(f'\n{str(headline_info[0])} {str(headline_info[1])}')
+                elif write_append_option == 'a':
+                    # Appending txt file. First line (idx==0), so new line for new entry before:
                     f.writelines(f'\n{str(headline_info[0])} {str(headline_info[1])}')
                 else:
+                    # First line in txt file:
                     f.writelines(f'{str(headline_info[0])} {str(headline_info[1])}')
     
+    def write_or_append_output(self, txt_filepath):
+        '''Check if output file exists and return according option for with-open context manager'''
+        if os.path.exists(txt_filepath):
+            return 'a'
+        else:
+            return 'w'
+
     def run(self):
         '''main method upon instance creation'''
         urls_list = self.get_urls()
         print(f'Collected category urls:\n{urls_list}')
         for url in urls_list:
+            print('-----------New category request---------')
             response = self.get_response(url)
             self.scrape_category(response)
-            print('\nRESULTS FROM ONE CATEGORY-------------------BELOW-------------')
-            print(self.category_results)
+
+            # print('\nRESULTS FROM ONE CATEGORY-------------------BELOW-------------')
+            # print(self.category_results)
             print(f'\nServer response time: {response.elapsed.total_seconds()}')
             # Exporting, now, in future, join from other categories:
-            self.export_txt(self.category_results)
+            w_a_option = self.write_or_append_output(self.outputfile)
+            self.export_txt(self.category_results, w_a_option)
             # temp print output:
             print('sleeping before jumping to next category... ZZZzzzz...')
             sleep(randint(10, 40)/10)
-            break
-
+            # break
 
 if  __name__ == '__main__':
     pass
