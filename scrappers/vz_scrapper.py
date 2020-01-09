@@ -74,7 +74,7 @@ class VzScrapper():
         '''collects links and article headlines within passed category url'''
         if response != None:
             self.category_results = []
-            self.soup = BeautifulSoup(response.text, 'lxml')
+            self.soup = BeautifulSoup(response.content, 'lxml')
             self.content_container = self.soup.find('div', class_='main')
 
             main_article_data = get_category_main_article(self.content_container)
