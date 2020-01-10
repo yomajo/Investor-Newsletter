@@ -2,41 +2,36 @@ from scrappers.scrapper import Scrapper
 from bs4 import BeautifulSoup
 
 
-class VzScrapper(Scrapper):
-    '''Modifying inherited structure to scrape categories within VZSCRAPPER in config.ini. Instance takes args:
+class LrtScrapper(Scrapper):
+    '''Modifying inherited structure to scrape categories within LrtScrapper in config.ini. Instance takes args:
     - base website
     - path to config file where class takes website categories suffix to url
     - relative output csv file path'''
         
     def get_category_feature_article(self, content_container, appendable_output_list):
         '''appends second arg with single list of feature article headline and url from passed content container'''
-        feature_article_headline = content_container.find('div', class_='main-article').h2.a.text
-        feature_article_url = content_container.find('div', class_='main-article').h2.a['href']
-        cat_feature_list = [feature_article_headline, feature_article_url]
-        appendable_output_list.append(cat_feature_list)        
-
+        feature_article_container = content_container.find('div', class_='section-news-rubric__top col-12')
+        feature_headline = feature_article_container.h3.a.text
+        feature_url = feature_article_container.h3.a['href']
+        cat_feature_list = [feature_headline, feature_url]
+        appendable_output_list.append(cat_feature_list)
+        
     def get_category_articles(self, content_container, appendable_output_list):
         '''appends second arg with list of article headlines and urls from passed content container'''
-        all_category_divs = content_container.findAll('div', class_='article')
-        for article_div in all_category_divs:
-            article_headline_raw = article_div.h2.a.text.strip()    
-            article_headline = self.clean_headline(article_headline_raw)
-            article_url = article_div.h2.a['href']
+        all_category_divs = content_container.find('div', id='category_list')
+        article_containers = all_category_divs.findAll('h3', class_='news__title')
+        for article in article_containers:
+            article_headline = article.a.text.strip()
+            article_url = article.a['href']
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
-
-    def clean_headline(self, headline):
-        '''removes tabs, newline, other non-interest symbols'''
-        repl_headline = headline.replace('\tPremium','').replace('\xa0','').replace('\r', '').replace('\n', '').replace('\t', '')
-        cleaned_headline = repl_headline.strip()
-        return cleaned_headline
 
     def scrape_category(self, response):
         '''Collects links and article headlines within passed category url'''
         if response != None:
             self.category_results = []
             # Pass corresponding html element and CSS class to  
-            self.content_container = self.get_content_container(response, 'div', 'main')
+            self.content_container = self.get_content_container(response, 'div', 'section-news-rubric__grid row')
             self.get_category_feature_article(self.content_container, self.category_results)
             self.get_category_articles(self.content_container, self.category_results)
         else:

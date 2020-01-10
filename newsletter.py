@@ -1,4 +1,5 @@
 from scrappers.vz_scrapper import VzScrapper
+from scrappers.lrt_scrapper import LrtScrapper 
 from configparser import ConfigParser
 
 # GLOBAL VARIABLES:
@@ -21,12 +22,14 @@ def get_base_urls_from_config(config_file_path, section_name):
 def main():
     base_urls = get_base_urls_from_config(config_file, 'BASE_URLS')
     base_url_vz = base_urls[0]
-
-    vz_scrapper_inst = VzScrapper(base_url_vz, config_file, 'Output/vz_headlines.csv')
-
-    vz_headlines_list = vz_scrapper_inst.get_website_headlines_as_list()
-    vz_scrapper_inst.export_list_to_csv(vz_headlines_list, vz_scrapper_inst.output_csv_file)
-
+    base_url_lrt = base_urls[1]
+    # vz_scrapper_inst = VzScrapper(base_url_vz, config_file, 'Output/vz_headlines.csv')
+    # vz_headlines_list = vz_scrapper_inst.get_website_headlines_as_list()
+    # vz_scrapper_inst.export_list_to_csv(vz_headlines_list, vz_scrapper_inst.output_csv_file)
+    
+    lrt_scrapper_inst = LrtScrapper(base_url_lrt, config_file, 'Output/lrt_headlines.csv')
+    lrt_headlines_list = lrt_scrapper_inst.get_website_headlines_as_list()
+    lrt_scrapper_inst.export_list_to_csv(lrt_headlines_list, lrt_scrapper_inst.output_csv_file)
 
 if __name__ == '__main__':
     main()
