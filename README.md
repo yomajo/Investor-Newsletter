@@ -12,6 +12,8 @@
     - Construction and Real Estate
 - Lietuvos radijas ir televizija [lrt.lt](https://www.lrt.lt/)
     - Business
+- ERR [err.ee](https://www.err.ee/)
+    - Economy
 - Postimees [postimees.ee](https://www.postimees.ee/)
     - Business
     - Investing

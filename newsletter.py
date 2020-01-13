@@ -1,5 +1,6 @@
 from scrappers.vz_scrapper import VzScrapper
-from scrappers.lrt_scrapper import LrtScrapper 
+from scrappers.lrt_scrapper import LrtScrapper
+from scrappers.err_scrapper import ERRScrapper
 from configparser import ConfigParser
 
 # GLOBAL VARIABLES:
@@ -21,15 +22,19 @@ def get_base_urls_from_config(config_file_path, section_name):
 
 def main():
     base_urls = get_base_urls_from_config(config_file, 'BASE_URLS')
-    base_url_vz = base_urls[0]
-    base_url_lrt = base_urls[1]
+    # base_url_vz = base_urls[0]
+    # base_url_lrt = base_urls[1]
+    base_url_err = base_urls[2]
     # vz_scrapper_inst = VzScrapper(base_url_vz, config_file, 'Output/vz_headlines.csv')
     # vz_headlines_list = vz_scrapper_inst.get_website_headlines_as_list()
     # vz_scrapper_inst.export_list_to_csv(vz_headlines_list, vz_scrapper_inst.output_csv_file)
-    
-    lrt_scrapper_inst = LrtScrapper(base_url_lrt, config_file, 'Output/lrt_headlines.csv')
-    lrt_headlines_list = lrt_scrapper_inst.get_website_headlines_as_list()
-    lrt_scrapper_inst.export_list_to_csv(lrt_headlines_list, lrt_scrapper_inst.output_csv_file)
+    # lrt_scrapper_inst = LrtScrapper(base_url_lrt, config_file, 'Output/lrt_headlines.csv')
+    # lrt_headlines_list = lrt_scrapper_inst.get_website_headlines_as_list()
+    # lrt_scrapper_inst.export_list_to_csv(lrt_headlines_list, lrt_scrapper_inst.output_csv_file)
+    err_scrapper_inst = ERRScrapper(base_url_err, config_file, 'Output/err_headlines(no translaation yet).csv')
+    err_headlines_list = err_scrapper_inst.get_website_headlines_as_list()
+    err_scrapper_inst.export_list_to_csv(err_headlines_list, err_scrapper_inst.output_csv_file)
+
 
 if __name__ == '__main__':
     main()
