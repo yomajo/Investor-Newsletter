@@ -32,7 +32,7 @@ class VzScrapper(Scrapper):
         return cleaned_headline
 
     def scrape_category(self, response):
-        '''Collects links and article headlines within passed category url'''
+        '''Collects links and article headlines within passed category response'''
         if response != None:
             self.category_results = []
             # Pass corresponding html element and CSS class to  

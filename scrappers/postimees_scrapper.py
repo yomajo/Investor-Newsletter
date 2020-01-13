@@ -18,7 +18,7 @@ class PostimeesScrapper(Scrapper):
             appendable_output_list.append(cycle_output_as_list)
 
     def scrape_category(self, response):
-        '''Collects links and article headlines within passed category url'''
+        '''Collects links and article headlines within passed category respose'''
         if response != None:
             self.category_results = []
             self.content_container = self.get_content_container(response, 'ul', 'search-results')

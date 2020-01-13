@@ -59,7 +59,7 @@ class Scrapper():
 
     def scrape_category(self, response):
         '''---OVERWRITE WHEN INHERITING---'''
-        '''collects links and article headlines within passed category url'''
+        '''collects links and article headlines within passed category response'''
         if response != None:
             self.category_results = []
         #     # Pass corresponding html element and CSS class to  
