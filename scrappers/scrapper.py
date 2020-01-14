@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 from configparser import ConfigParser
 from time import sleep
 from random import randint
+from urllib.parse import urljoin
 import os
 import requests
 import lxml
@@ -86,6 +87,13 @@ class Scrapper():
         '''---OVERWRITE WHEN INHERITING---'''
         '''appends second arg with list of article headlines and urls from passed content container'''
         pass
+
+    def validate_url(self, url):
+        '''converts relative url to absolute if neccesarry. self.base_url neccessary'''
+        if url.startswith('/'):
+            return urljoin(self.base_url, url)
+        else:
+            return url
 
     def get_website_headlines_as_list(self):
         '''iterates over category urls, scrapes data from each category, returns a list of lists of unique headlines and urls'''
