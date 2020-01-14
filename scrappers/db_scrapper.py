@@ -12,7 +12,7 @@ class DbScrapper(Scrapper):
         '''appends second arg with list of article headlines and urls from passed content container'''
         all_category_divs = content_container.findAll('div', class_='padding-2--bottom')        
         for article_div in all_category_divs:
-            article_headline = article_div.h1.a.text    
+            article_headline = article_div.h1.a.text.strip()  
             article_url = article_div.h1.a['href']
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
