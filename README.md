@@ -24,6 +24,9 @@
 - Dienas Bizness [db.lv](https://www.db.lv/)
     - Economy
     - Finance
+    - Energy
+    - Investors
+    - Start-up
 
 ## Requirements
 
