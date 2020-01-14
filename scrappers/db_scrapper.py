@@ -1,0 +1,31 @@
+from scrappers.scrapper import Scrapper
+from bs4 import BeautifulSoup
+
+
+class DbScrapper(Scrapper):
+    '''Modifying inherited structure to scrape categories within DBSCRAPPER in config.ini. Instance takes args:
+    - base website
+    - path to config file where class takes website categories suffix to url
+    - relative output csv file path'''
+        
+    def get_category_articles(self, content_container, appendable_output_list):
+        '''appends second arg with list of article headlines and urls from passed content container'''
+        all_category_divs = content_container.findAll('div', class_='padding-2--bottom')        
+        for article_div in all_category_divs:
+            article_headline = article_div.h1.a.text    
+            article_url = article_div.h1.a['href']
+            cycle_output_as_list = [article_headline, article_url]
+            appendable_output_list.append(cycle_output_as_list)
+
+    def scrape_category(self, response):
+        '''Collects links and article headlines within passed category response'''
+        if response != None:
+            self.category_results = []
+            self.content_container = self.get_content_container(response, 'div', 'margin-4--vertical')
+            self.get_category_articles(self.content_container, self.category_results)
+        else:
+            print('Server did not respond well')
+        
+
+if  __name__ == '__main__':
+    pass

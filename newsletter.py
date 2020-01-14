@@ -3,6 +3,7 @@ from scrappers.lrt_scrapper import LrtScrapper
 from scrappers.err_scrapper import ERRScrapper
 from scrappers.postimees_scrapper import PostimeesScrapper
 from scrappers.baltictimes_scrapper import BalticTimesScrapper
+from scrappers.db_scrapper import DbScrapper
 from configparser import ConfigParser
 
 # GLOBAL VARIABLES:
@@ -28,7 +29,8 @@ def main():
     # base_url_lrt = base_urls[1]
     # base_url_err = base_urls[2]
     # base_url_postimees = base_urls[3]
-    base_url_btimes = base_urls[4]
+    # base_url_btimes = base_urls[4]
+    base_url_db = base_urls[5]
 
     # vz_scrapper_inst = VzScrapper(base_url_vz, config_file, 'Output/vz_headlines.csv')
     # vz_headlines_list = vz_scrapper_inst.get_website_headlines_as_list()
@@ -42,9 +44,12 @@ def main():
     # postimees_scrapper_inst = PostimeesScrapper(base_url_postimees, config_file, 'Output/postimees_headlines(no translaation yet).csv')
     # postimees_headlines_list = postimees_scrapper_inst.get_website_headlines_as_list()
     # postimees_scrapper_inst.export_list_to_csv(postimees_headlines_list, postimees_scrapper_inst.output_csv_file)
-    btimes_scrapper_inst = BalticTimesScrapper(base_url_btimes, config_file, 'Output/baltic_times_headlines.csv')
-    btimes_headlines_list = btimes_scrapper_inst.get_website_headlines_as_list()
-    btimes_scrapper_inst.export_list_to_csv(btimes_headlines_list, btimes_scrapper_inst.output_csv_file)
+    # btimes_scrapper_inst = BalticTimesScrapper(base_url_btimes, config_file, 'Output/baltic_times_headlines.csv')
+    # btimes_headlines_list = btimes_scrapper_inst.get_website_headlines_as_list()
+    # btimes_scrapper_inst.export_list_to_csv(btimes_headlines_list, btimes_scrapper_inst.output_csv_file)
+    db_scrapper_inst = DbScrapper(base_url_db, config_file, 'Output/db_headlines.csv')
+    db_headlines_list = db_scrapper_inst.get_website_headlines_as_list()
+    db_scrapper_inst.export_list_to_csv(db_headlines_list, db_scrapper_inst.output_csv_file)
 
 
 
