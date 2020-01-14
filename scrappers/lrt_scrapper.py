@@ -12,7 +12,8 @@ class LrtScrapper(Scrapper):
         '''appends second arg with single list of feature article headline and url from passed content container'''
         feature_article_container = content_container.find('div', class_='section-news-rubric__top col-12')
         feature_headline = feature_article_container.h3.a.text
-        feature_url = feature_article_container.h3.a['href']
+        feature_url_unval = feature_article_container.h3.a['href']
+        feature_url = self.validate_url(feature_url_unval)
         cat_feature_list = [feature_headline, feature_url]
         appendable_output_list.append(cat_feature_list)
         
@@ -22,7 +23,8 @@ class LrtScrapper(Scrapper):
         article_containers = all_category_divs.findAll('h3', class_='news__title')
         for article in article_containers:
             article_headline = article.a.text.strip()
-            article_url = article.a['href']
+            article_url_unval = article.a['href']
+            article_url = self.validate_url(article_url_unval)
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
 

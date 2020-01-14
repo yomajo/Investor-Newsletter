@@ -11,7 +11,8 @@ class VzScrapper(Scrapper):
     def get_category_feature_article(self, content_container, appendable_output_list):
         '''appends second arg with single list of feature article headline and url from passed content container'''
         feature_article_headline = content_container.find('div', class_='main-article').h2.a.text
-        feature_article_url = content_container.find('div', class_='main-article').h2.a['href']
+        feature_article_url_unval = content_container.find('div', class_='main-article').h2.a['href']
+        feature_article_url = self.validate_url(feature_article_url_unval)
         cat_feature_list = [feature_article_headline, feature_article_url]
         appendable_output_list.append(cat_feature_list)        
 
@@ -21,7 +22,8 @@ class VzScrapper(Scrapper):
         for article_div in all_category_divs:
             article_headline_raw = article_div.h2.a.text.strip()    
             article_headline = self.clean_headline(article_headline_raw)
-            article_url = article_div.h2.a['href']
+            article_url_unval = article_div.h2.a['href']
+            article_url = self.validate_url(article_url_unval)
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
 

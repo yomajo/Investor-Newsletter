@@ -13,7 +13,8 @@ class PostimeesScrapper(Scrapper):
         all_category_divs = content_container.findAll('li', class_='search-results__item')
         for article in all_category_divs:
             article_headline = article.span.a.text.strip()
-            article_url = article.span.a['href']
+            article_url_unval = article.span.a['href']
+            article_url = self.validate_url(article_url_unval)
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
 

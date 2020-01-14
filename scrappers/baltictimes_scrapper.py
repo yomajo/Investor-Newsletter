@@ -13,7 +13,8 @@ class BalticTimesScrapper(Scrapper):
         feature_article_container = content_container.find('div', class_='row portfolio-item')
         feature_artcle_headline = feature_article_container.find('div', class_='col-md-5')
         feature_headline = feature_artcle_headline.h2.text
-        feature_url = feature_artcle_headline.a['href']
+        feature_url_unval = feature_artcle_headline.a['href']
+        feature_url = self.validate_url(feature_url_unval)
         cat_feature_list = [feature_headline, feature_url]
         appendable_output_list.append(cat_feature_list)
         
@@ -23,7 +24,8 @@ class BalticTimesScrapper(Scrapper):
         article_containers = rest_articles_wrapper.findAll('div', class_='row blog blog-medium margin-bottom-20')
         for article in article_containers:
             article_headline = article.h4.text
-            article_url = article.a['href']
+            article_url_unval = article.a['href']
+            article_url = self.validate_url(article_url_unval)
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
 

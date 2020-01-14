@@ -13,7 +13,8 @@ class ERRScrapper(Scrapper):
         all_category_divs = content_container.findAll('div', class_='category-item')
         for article in all_category_divs:
             article_headline = article.p.a.text.strip()
-            article_url = article.p.a['href']
+            article_url_unval = article.p.a['href']
+            article_url = self.validate_url(article_url_unval)
             cycle_output_as_list = [article_headline, article_url]
             appendable_output_list.append(cycle_output_as_list)
 
