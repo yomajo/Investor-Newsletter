@@ -35,7 +35,6 @@ class VzScrapper(Scrapper):
         '''Collects links and article headlines within passed category response'''
         if response != None:
             self.category_results = []
-            # Pass corresponding html element and CSS class to  
             self.content_container = self.get_content_container(response, 'div', 'main')
             self.get_category_feature_article(self.content_container, self.category_results)
             self.get_category_articles(self.content_container, self.category_results)
