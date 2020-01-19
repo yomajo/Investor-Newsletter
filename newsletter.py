@@ -4,6 +4,7 @@ from scrappers.err_scrapper import ERRScrapper
 from scrappers.postimees_scrapper import PostimeesScrapper
 from scrappers.baltictimes_scrapper import BalticTimesScrapper
 from scrappers.db_scrapper import DbScrapper
+from translate import TranslateList
 from configparser import ConfigParser
 
 # GLOBAL VARIABLES:
