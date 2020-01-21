@@ -24,10 +24,9 @@ class Scrapper():
     Output export --> export_list_to_csv(args*)
     '''
 
-    def __init__(self, base_url, config_file, output_csv_file):
+    def __init__(self, base_url, config_file):
         self.base_url = base_url
         self.config_file = config_file
-        self.output_csv_file = output_csv_file
 
     def get_categs_list(self):
         '''return list of categories (string as part of url)'''
