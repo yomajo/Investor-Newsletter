@@ -1,0 +1,131 @@
+C:\Coding\Investor-Newsletter>C:/Users/yo/AppData/Local/Programs/Python/Python37-32/python.exe c:/Coding/Investor-Newsletter/newsletter.py
+Found this in config.ini: https://www.vz.lt/. Adding it to list.
+Found this in config.ini: https://www.lrt.lt/. Adding it to list.
+Found this in config.ini: https://www.err.ee/. Adding it to list.
+Found this in config.ini: https://majandus24.postimees.ee/. Adding it to list.
+Found this in config.ini: https://www.baltictimes.com/. Adding it to list.
+Found this in config.ini: https://www.db.lv/. Adding it to list.
+Reading config file config.ini contents from section: VZSCRAPPER
+Collected category urls:
+['https://www.vz.lt/rinkos', 'https://www.vz.lt/pramone', 'https://www.vz.lt/finansai-apskaita', 'https://www.vz.lt/verslo-aplinka', 'https://www.vz.lt/technologijos-mokslas']
+-----------New request in category: rinkos---------
+
+Server response time: 0.398719
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: pramone---------
+
+Server response time: 0.498207
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: finansai-apskaita---------
+
+Server response time: 0.314137
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: verslo-aplinka---------
+
+Server response time: 0.431169
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: technologijos-mokslas---------
+
+Server response time: 0.457998
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+Reading config file config.ini contents from section: LRTSCRAPPER
+Collected category urls:
+['https://www.lrt.lt/naujienos/verslas']
+-----------New request in category: naujienos/verslas---------
+
+Server response time: 0.445012
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+Reading config file config.ini contents from section: ERRSCRAPPER
+Collected category urls:
+['https://www.err.ee/k/majandus']
+-----------New request in category: k/majandus---------
+
+Server response time: 0.401461
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+Reading config file config.ini contents from section: POSTIMEESSCRAPPER
+Collected category urls:
+['https://majandus24.postimees.ee/search']
+-----------New request in category: search---------
+
+Server response time: 0.37538
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+Reading config file config.ini contents from section: BALTICTIMESSCRAPPER
+Collected category urls:
+['https://www.baltictimes.com/news_business']
+-----------New request in category: news_business---------
+
+Server response time: 0.274294
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+Reading config file config.ini contents from section: DBSCRAPPER
+Collected category urls:
+['https://www.db.lv/sadalas/ekonomika', 'https://www.db.lv/sadalas/finanses', 'https://www.db.lv/sadalas/energetika', 'https://www.db.lv/sadalas/start-up', 'https://www.db.lv/sadalas/investors', 'https://www.db.lv/sadalas/razosana']
+-----------New request in category: sadalas/ekonomika---------
+
+Server response time: 0.388413
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: sadalas/finanses---------
+
+Server response time: 0.273885
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: sadalas/energetika---------
+
+Server response time: 0.298585
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: sadalas/start-up---------
+
+Server response time: 0.28953
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: sadalas/investors---------
+
+Server response time: 0.279011
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+-----------New request in category: sadalas/razosana---------
+
+Server response time: 0.300434
+Writing category headlines infomation to common variable
+sleeping before jumping to next category... ZZZzzzz...
+------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 95, new list length: 95
+Detecting headlines list language consistency and original language
+Passed list members are of same language, detection confidence level: 0.010526315789473684
+Returning without translation. Detected lang lt already in ['en', 'lt']
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 25, new list length: 25
+Detecting headlines list language consistency and original language
+Passed list members are of same language, detection confidence level: 0.04
+Returning without translation. Detected lang lt already in ['en', 'lt']
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 50, new list length: 50
+Detecting headlines list language consistency and original language
+Passed list members are of same language, detection confidence level: 0.02
+Detected language in passed list: et, translating...
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 40, new list length: 40
+Detecting headlines list language consistency and original language
+Passed list members are of same language, detection confidence level: 0.025
+Detected language in passed list: et, translating...
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 15, new list length: 15
+Detecting headlines list language consistency and original language
+Passed list contains more than one language. Detected languages contain: ['en', 'ende']
+Extracting headings from headline data lists
+Formed a stripped list of headlines only. Source list length: 103, new list length: 103
+Detecting headlines list language consistency and original language
+Passed list members are of same language, detection confidence level: 0.009708737864077669
+Detected language in passed list: lv, translating...
+FINISHED
