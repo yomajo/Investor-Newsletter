@@ -55,20 +55,34 @@ class TranslateList():
         '''simply compared lengths of passed lists'''
         return len(src_list) == len(translated_list)
 
+    def construct_src_size_output(self, src_list, translated_list):
+        '''returns src_list size/form list with headlines replaced from passed translated_list'''
+        if self.lists_same_length(src_list, translated_list):
+            output_translated_list = self.src_list
+            for idx, headline_data in enumerate(output_translated_list):
+                headline_data[0] = translated_list[idx]
+            return output_translated_list
+        else:
+            print(f'Could not map lists while constructing output. translated_list len: {len(translated_list)} while src_list len: {len(self.src_list)}')
+            raise Exception
+
     def get_translated(self):
-        '''returns translated list'''
+        '''returns translated list if src is not yet in desired lang'''
         if self.desired_langs_supported():
             print(f'Extracting headings from headline data lists')
             self.headlines = self.strip_src_to_headings()
             print(f'Detecting headlines list language consistency and original language')
             detected_src_lang = self.get_headlines_list_lang(self.headlines)
-            translated_headlines = self.bulk_translate(self.headlines, detected_src_lang, self.desired_lang_list[0])
-            if self.lists_same_length(self.src_list, translated_headlines):
-                # Constructing output list
-                output_translated_list = self.src_list
-                for idx, headline_data in enumerate(output_translated_list):
-                    headline_data[0] = translated_headlines[idx]
-        return output_translated_list
+            # Translate only if detected language is not in target langs list passed as desired_lang_list
+            if detected_src_lang not in self.desired_lang_list:    
+                print(f'Detected language in passed list: {detected_src_lang}, translating...')
+                translated_headlines = self.bulk_translate(self.headlines, detected_src_lang, self.desired_lang_list[0])
+                translated_cls_output = self.construct_src_size_output(self.src_list, translated_headlines)
+                return translated_cls_output
+            else:
+                print(f'Returning without translation. Detected lang {detected_src_lang} already in {self.desired_lang_list}')
+                return self.src_list
+
 
 if __name__ == '__main__':
     pass
