@@ -86,13 +86,15 @@ def test_lv_translation():
     '''prints'''
     import csv
     db_headlines = []
-    test_file = 'Output/Headlines_data(5).csv'
+    # DB LV::::::::: 'Output/Headlines_data(5).csv'
+    test_file = 'Output/Headlines_data(3).csv'
+    print('Opening file to collect to list:')
     with open(test_file, 'r') as f:
         reader = csv.reader(f, delimiter='\t')
         for idx, csv_line in enumerate(reader):
             db_headlines.append(csv_line)
             # Limit import headlines list lenght:
-            if idx == 2:
+            if idx == 1:
                 break
     print(f'Formed list from db.lv successfully. List len: {len(db_headlines)}')
     # Translation bit

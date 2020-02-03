@@ -13,6 +13,7 @@ class TranslateList():
         self.translator = Translator()
         self.expected_langs = ['en', 'et', 'lv', 'lt']
         self.detection_confidence = 0.8
+        self.sleep_time = 0.4
 
     def desired_langs_supported(self):
         '''check if desired languages are supported by googletrans package'''
@@ -34,7 +35,7 @@ class TranslateList():
         self.get_detected_lang_obj_list(self.headlines)
         detected_langs = []
         for idx, detect_obj in enumerate(self.detected_lang_objs):
-            sleep(0.3)
+            sleep(self.sleep_time)
             print(f'Inside get_headlines_list_lang. Iterating over in {idx} member')
             if detect_obj.lang not in self.expected_langs or detect_obj.confidence < self.detection_confidence:
                 print(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {detect_obj}. Deleting member')
@@ -48,8 +49,9 @@ class TranslateList():
         return detected_langs[0]
 
     def get_detected_lang_obj_list(self, raw_headlines_list):
-        ''''''
+        '''gets iterable detection object querying google translate'''
         try:
+            sleep(self.sleep_time)
             self.detected_lang_objs = self.translator.detect(raw_headlines_list)
         except:
             raise Exception('Failed to create lang detection objects inside \'get_detected_lang_obj_list\' method')
