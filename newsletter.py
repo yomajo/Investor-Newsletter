@@ -67,14 +67,43 @@ def main():
 
     print('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------')
 
-    for scrapped_list in raw_scrappers_output:
+    # TEMPORARY EXPORTS BEFORE TRANSLATION OF EACH MEMBER:
+    for idx, scrapped_list in enumerate(raw_scrappers_output):
+        db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
+        
+    
+    for idx, scrapped_list in enumerate(raw_scrappers_output):
         translator = TranslateList(scrapped_list, desired_langs)
         try:
             translated_headlines_data = translator.get_translated()
             db_scrapper_inst.export_list_to_csv(translated_headlines_data, OUTPUT_HEADLINESDATA_FILE)
         except:
+            print(f'Failed to translate {idx} headlines list containing {len(scrapped_list)} headlines. Moving on...')
             continue
     print('FINISHED')
 
+def test_lv_translation():
+    '''prints'''
+    import csv
+    db_headlines = []
+    test_file = 'Output/Headlines_data(5).csv'
+    with open(test_file, 'r') as f:
+        reader = csv.reader(f, delimiter='\t')
+        for idx, csv_line in enumerate(reader):
+            db_headlines.append(csv_line)
+            # Limit import headlines list lenght:
+            if idx == 2:
+                break
+    print(f'Formed list from db.lv successfully. List len: {len(db_headlines)}')
+    # Translation bit
+    print('Getting desired langs')
+    desired_langs = get_desired_langs(CONFIG_FILE, 'LANGUAGES')
+    print('-----Moving on with translation-----')
+    translator = TranslateList(db_headlines, desired_langs)
+    translated_db_headlines = translator.get_translated()
+    print(f'---------------------\nIf you see this, you have fixed the issue. Translated list length: {len(translated_db_headlines)}')
+
+
 if __name__ == '__main__':
-    main()
+    # main()
+    test_lv_translation()
