@@ -1,4 +1,5 @@
 from googletrans import Translator, LANGUAGES
+from time import sleep
 
 
 class TranslateList():
@@ -10,13 +11,14 @@ class TranslateList():
         self.src_list = src_list
         self.desired_lang_list = desired_lang_list
         self.translator = Translator()
+        self.expected_langs = ['en', 'et', 'lv', 'lt']
+        self.detection_confidence = 0.8
 
     def desired_langs_supported(self):
         '''check if desired languages are supported by googletrans package'''
         for lang in self.desired_lang_list:
             if lang not in LANGUAGES:
-                print(f'Provided target language: {lang} is not supported by googletrans library')
-                raise Exception
+                raise Exception(f'Passed target language for TranslateList class {lang} is not supported by googletrans library')
         return True
 
     def strip_src_to_headings(self):
@@ -28,20 +30,35 @@ class TranslateList():
         return headings
 
     def get_headlines_list_lang(self, raw_headlines_list):
-        '''returns detected lang of passed list'''
-        detected_lang_objs = self.translator.detect(raw_headlines_list)
-        confidence_sum = 0
+        '''traverses all list members; deletes members below language detection confidence or not of expected lang list, returns detected lang'''
+        self.get_detected_lang_obj_list(self.headlines)
         detected_langs = []
-        for detect_obj in detected_lang_objs:
+        for idx, detect_obj in enumerate(self.detected_lang_objs):
+            sleep(0.3)
+            print(f'Inside get_headlines_list_lang. Iterating over in {idx} member')
+            if detect_obj.lang not in self.expected_langs or detect_obj.confidence < self.detection_confidence:
+                print(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {detect_obj}. Deleting member')
+                self.delete_member(idx)
+                break
             if detect_obj.lang not in detected_langs:
                 detected_langs.append(detect_obj.lang)
-                confidence_sum = confidence_sum + detect_obj.confidence
+            continue
         if len(detected_langs) != 1:
-            print(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
-            raise Exception
-        confidence = confidence_sum / len(raw_headlines_list)
-        print(f'Passed list members are of same language, detection confidence level: {confidence}')
+            raise Exception(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
         return detected_langs[0]
+
+    def get_detected_lang_obj_list(self, raw_headlines_list):
+        ''''''
+        try:
+            self.detected_lang_objs = self.translator.detect(raw_headlines_list)
+        except:
+            raise Exception('Failed to create lang detection objects inside \'get_detected_lang_obj_list\' method')
+        
+
+    def delete_member(self, idx):
+        '''removes member at idx from self.src_list passed to cls and stripped self.headings'''
+        self.headlines.pop(idx)
+        self.src_list.pop(idx)
 
     def bulk_translate(self, list_to_translate, src_lang, trg_lang):
         '''translate passed list from src_lang to trg_lang'''
@@ -63,14 +80,21 @@ class TranslateList():
                 headline_data[0] = translated_list[idx]
             return output_translated_list
         else:
-            print(f'Could not map lists while constructing output. translated_list len: {len(translated_list)} while src_list len: {len(self.src_list)}')
-            raise Exception
+            raise Exception(f'Could not map lists while constructing output. translated_list len: {len(translated_list)} while src_list len: {len(self.src_list)}')
+
+    def get_total_chars(self, list_to_calc):
+        '''prints out total characters passed to be proccessed to google translate'''
+        chars = 0
+        for item in list_to_calc:
+            chars = chars + len(item)
+        print(f'Calculated total number characters in passed headlines list is {chars}\n')
 
     def get_translated(self):
-        '''returns translated list if src is not yet in desired lang'''
+        '''if possible, returns translated list'''        
         if self.desired_langs_supported():
             print(f'Extracting headings from headline data lists')
             self.headlines = self.strip_src_to_headings()
+            self.get_total_chars(self.headlines)
             print(f'Detecting headlines list language consistency and original language')
             detected_src_lang = self.get_headlines_list_lang(self.headlines)
             # Translate only if detected language is not in target langs list passed as desired_lang_list
@@ -80,7 +104,7 @@ class TranslateList():
                 translated_cls_output = self.construct_src_size_output(self.src_list, translated_headlines)
                 return translated_cls_output
             else:
-                print(f'Returning without translation. Detected lang {detected_src_lang} already in {self.desired_lang_list}')
+                print(f'Returning without translation. Detected lang \'{detected_src_lang}\' already in {self.desired_lang_list}')
                 return self.src_list
 
 
