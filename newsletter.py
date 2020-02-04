@@ -107,5 +107,5 @@ def test_lv_translation():
 
 
 if __name__ == '__main__':
-    # main()
-    test_lv_translation()
+    main()
+    # test_lv_translation()
