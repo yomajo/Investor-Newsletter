@@ -1,5 +1,6 @@
 from googletrans import Translator, LANGUAGES
 from time import sleep
+import langdetect
 
 
 class TranslateList():
@@ -12,8 +13,8 @@ class TranslateList():
         self.desired_lang_list = desired_lang_list
         self.translator = Translator()
         self.expected_langs = ['en', 'et', 'lv', 'lt']
-        self.detection_confidence = 0.8
-        self.sleep_time = 0.4
+        self.detection_confidence = 0.9
+        self.sleep_time = 100
 
     def desired_langs_supported(self):
         '''check if desired languages are supported by googletrans package'''
@@ -31,42 +32,41 @@ class TranslateList():
         return headings
 
     def get_headlines_list_lang(self, raw_headlines_list):
-        '''traverses all list members; deletes members below language detection confidence or not of expected lang list, returns detected lang'''
-        self.get_detected_lang_obj_list(self.headlines)
+        '''traverses all list members; deletes members below language detection confidence or not of expected lang list, returns detected lang. Detection via langdetect'''
         detected_langs = []
-        for idx, detect_obj in enumerate(self.detected_lang_objs):
-            sleep(self.sleep_time)
-            print(f'Inside get_headlines_list_lang. Iterating over in {idx} member')
-            if detect_obj.lang not in self.expected_langs or detect_obj.confidence < self.detection_confidence:
-                print(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {detect_obj}. Deleting member')
+        for idx, headline in enumerate(raw_headlines_list):
+            top_detect_res = langdetect.detect_langs(headline)[0]
+            lang, confidence = top_detect_res.lang, top_detect_res.prob
+            if lang not in self.expected_langs or confidence < self.detection_confidence:
+                print(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {top_detect_res}, content: {headline}\nDeleting member')
                 self.delete_member(idx)
                 break
-            if detect_obj.lang not in detected_langs:
-                detected_langs.append(detect_obj.lang)
+            if lang not in detected_langs:
+                detected_langs.append(lang)
             continue
         if len(detected_langs) != 1:
             raise Exception(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
         return detected_langs[0]
-
-    def get_detected_lang_obj_list(self, raw_headlines_list):
-        '''gets iterable detection object querying google translate'''
-        try:
-            sleep(self.sleep_time)
-            self.detected_lang_objs = self.translator.detect(raw_headlines_list)
-        except:
-            raise Exception('Failed to create lang detection objects inside \'get_detected_lang_obj_list\' method')
-        
 
     def delete_member(self, idx):
         '''removes member at idx from self.src_list passed to cls and stripped self.headings'''
         self.headlines.pop(idx)
         self.src_list.pop(idx)
 
+    def get_translation_obj(self, list_to_translate, src_lang, trg_lang):
+        '''gets iterable translation object querying google translate'''
+        try:
+            self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+            print(f'Sleeping after querying google API for {self.sleep_time} seconds... ZZzz...')
+            sleep(self.sleep_time)
+        except:
+            raise Exception('Failed to create lang translation objects inside \'get_translation_obj\' method')
+
     def bulk_translate(self, list_to_translate, src_lang, trg_lang):
         '''translate passed list from src_lang to trg_lang'''
         translated_headlines = []
-        translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
-        for translation in translation_objs:
+        self.get_translation_obj(list_to_translate, src_lang, trg_lang)
+        for translation in self.translation_objs:
             translated_headlines.append(translation.text)
         return translated_headlines
     
