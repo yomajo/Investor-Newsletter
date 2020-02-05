@@ -6,10 +6,11 @@ from scrappers.baltictimes_scrapper import BalticTimesScrapper
 from scrappers.db_scrapper import DbScrapper
 from translate import TranslateList
 from configparser import ConfigParser
+import csv
 
 # GLOBAL VARIABLES:
 CONFIG_FILE = 'config.ini'
-OUTPUT_HEADLINESDATA_FILE = 'Output/Headlines_data.csv'
+OUTPUT_HEADLINES_FILE = 'Output/Headlines_data.csv'
 
 
 def get_base_urls_from_config(config_file_path, section_name):
@@ -34,10 +35,33 @@ def get_desired_langs(config_file_path, section_name):
         desired_langs.append(lang)
     return desired_langs
 
+def get_headline_urls_in_db(csvfile_path):
+    '''reduces passed list to new entries only as compared to 'csv database' of already sent headlines'''
+    urls_in_db = []
+    with open(csvfile_path, 'r') as csvfile:
+        csv_data = csv.reader(csvfile, delimiter='\t')
+        for line in csv_data:
+            headline_url = line[1]
+            urls_in_db.append(headline_url)
+    print(f'Collected {len(urls_in_db)} headlines in database.')
+    return urls_in_db
+
+def reduce_raw_list(headlines_data_list, db_urls):
+    '''returns a list of headline data, that is NOT yet in db_urls list. Returns False if all list entries are already in db_urls'''
+    new_headline_data = []
+    for headline in headlines_data_list:
+        headline_url = headline[1]
+        if headline_url not in db_urls:
+            new_headline_data.append(headline)
+    if len(new_headline_data) == 0:
+        return False
+    return new_headline_data
+
+
 def main():
     base_urls = get_base_urls_from_config(CONFIG_FILE, 'BASE_URLS')
     desired_langs = get_desired_langs(CONFIG_FILE, 'LANGUAGES')
-        
+    urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
     raw_scrappers_output = []
 
     # Scrape and output results into raw_scrappers_output list for each website
@@ -67,45 +91,20 @@ def main():
 
     print('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------')
 
-    # TEMPORARY EXPORTS BEFORE TRANSLATION OF EACH MEMBER:
     for idx, scrapped_list in enumerate(raw_scrappers_output):
+        # Export separate, untranslated, raw scrape output from each website as separate csv
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
-        
-    
-    for idx, scrapped_list in enumerate(raw_scrappers_output):
-        translator = TranslateList(scrapped_list, desired_langs)
-        try:
-            translated_headlines_data = translator.get_translated()
-            db_scrapper_inst.export_list_to_csv(translated_headlines_data, OUTPUT_HEADLINESDATA_FILE)
-        except:
-            print(f'Failed to translate {idx} headlines list containing {len(scrapped_list)} headlines. Moving on...')
-            continue
+        # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
+        scrapped_new_list = reduce_raw_list(scrapped_list, urls_in_db)
+        if scrapped_new_list != False:    
+            translator = TranslateList(scrapped_new_list, desired_langs)
+            try:
+                translated_headlines_data = translator.get_translated()
+                db_scrapper_inst.export_list_to_csv(translated_headlines_data, OUTPUT_HEADLINES_FILE)
+            except:
+                print(f'Failed to translate {idx} headlines list containing stripped {len(scrapped_new_list)} new headlines. Moving on...')
+                continue
     print('FINISHED')
-
-def test_lv_translation():
-    '''prints'''
-    import csv
-    db_headlines = []
-    # DB LV::::::::: 'Output/Headlines_data(5).csv'
-    test_file = 'Output/Headlines_data(3).csv'
-    print('Opening file to collect to list:')
-    with open(test_file, 'r') as f:
-        reader = csv.reader(f, delimiter='\t')
-        for idx, csv_line in enumerate(reader):
-            db_headlines.append(csv_line)
-            # Limit import headlines list lenght:
-            if idx == 1:
-                break
-    print(f'Formed list from db.lv successfully. List len: {len(db_headlines)}')
-    # Translation bit
-    print('Getting desired langs')
-    desired_langs = get_desired_langs(CONFIG_FILE, 'LANGUAGES')
-    print('-----Moving on with translation-----')
-    translator = TranslateList(db_headlines, desired_langs)
-    translated_db_headlines = translator.get_translated()
-    print(f'---------------------\nIf you see this, you have fixed the issue. Translated list length: {len(translated_db_headlines)}')
-
 
 if __name__ == '__main__':
     main()
-    # test_lv_translation()
