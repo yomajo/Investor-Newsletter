@@ -8,6 +8,9 @@ import requests
 import lxml
 import csv
 
+# User Agent for Requests
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
+
 class Scrapper():
     '''Generic Scrapper class indented to inherit from for each specific website. Instance arguments:
     - base website
@@ -50,7 +53,7 @@ class Scrapper():
 
     def get_response(self, url):
         '''checks passsed url and returns response if available'''
-        r = requests.get(url, timeout=10)
+        r = requests.get(url, timeout=10, headers=HEADERS)
         if r.status_code == 200:
             return r
         else:
