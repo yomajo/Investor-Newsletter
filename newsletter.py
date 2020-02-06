@@ -96,6 +96,7 @@ def main():
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
         scrapped_new_list = reduce_raw_list(scrapped_list, urls_in_db)
+        print(f'New headlines for {base_urls[idx]} being passed to TranslateList: {len(scrapped_new_list)}')
         if scrapped_new_list != False:    
             translator = TranslateList(scrapped_new_list, desired_langs)
             try:
