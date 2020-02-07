@@ -1,9 +1,4 @@
-from scrappers.vz_scrapper import VzScrapper
-from scrappers.lrt_scrapper import LrtScrapper
-from scrappers.err_scrapper import ERRScrapper
-from scrappers.postimees_scrapper import PostimeesScrapper
-from scrappers.baltictimes_scrapper import BalticTimesScrapper
-from scrappers.db_scrapper import DbScrapper
+from scrappers import VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper
 from translate import TranslateList
 from configparser import ConfigParser
 import csv
