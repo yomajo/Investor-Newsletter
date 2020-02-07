@@ -65,11 +65,14 @@ class TranslateList():
     def bulk_translate(self, list_to_translate, src_lang, trg_lang):
         '''translate passed list from src_lang to trg_lang'''
         translated_headlines = []
-        self.get_translation_obj(list_to_translate, src_lang, trg_lang)
-        for translation in self.translation_objs:
-            translated_headlines.append(translation.text)
-        return translated_headlines
-    
+        try:
+            self.get_translation_obj(list_to_translate, src_lang, trg_lang)
+            for translation in self.translation_objs:
+                translated_headlines.append(translation.text)
+            return translated_headlines
+        except:
+            Exception(f'Error occured inside bulk_translate inside TranslateList')
+
     def lists_same_length(self, src_list, translated_list):
         '''simply compared lengths of passed lists'''
         return len(src_list) == len(translated_list)
