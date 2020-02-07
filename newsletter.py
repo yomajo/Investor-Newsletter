@@ -31,25 +31,16 @@ def get_desired_langs(config_file_path, section_name):
     return desired_langs
 
 def get_headline_urls_in_db(csvfile_path):
-    '''reduces passed list to new entries only as compared to 'csv database' of already sent headlines'''
-    urls_in_db = []
+    '''returns list of urls in 'csv database' of already sent headlines'''
     with open(csvfile_path, 'r') as csvfile:
         csv_data = csv.reader(csvfile, delimiter='\t')
-        for line in csv_data:
-            headline_url = line[1]
-            urls_in_db.append(headline_url)
+        urls_in_db = [headline_data[1] for headline_data in csv_data]
     print(f'Collected {len(urls_in_db)} headlines in database.')
     return urls_in_db
 
 def reduce_raw_list(headlines_data_list, db_urls):
-    '''returns a list of headline data, that is NOT yet in db_urls list. Returns False if all list entries are already in db_urls'''
-    new_headline_data = []
-    for headline in headlines_data_list:
-        headline_url = headline[1]
-        if headline_url not in db_urls:
-            new_headline_data.append(headline)
-    if len(new_headline_data) == 0:
-        return False
+    '''returns a list of headlines data, that are NOT yet in db_urls list'''
+    new_headline_data = [headline_data for headline_data in headlines_data_list if headline_data[1] not in db_urls]
     return new_headline_data
 
 
@@ -87,20 +78,31 @@ def main():
     print('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------')
 
     for idx, scrapped_list in enumerate(raw_scrappers_output):
-        # Export separate, untranslated, raw scrape output from each website as separate csv
+        # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
         scrapped_new_list = reduce_raw_list(scrapped_list, urls_in_db)
         print(f'New headlines for {base_urls[idx]} being passed to TranslateList: {len(scrapped_new_list)}')
-        if scrapped_new_list != False:    
+        headlines_to_email = []
+        if scrapped_new_list:    
             translator = TranslateList(scrapped_new_list, desired_langs)
             try:
                 translated_headlines_data = translator.get_translated()
-                db_scrapper_inst.export_list_to_csv(translated_headlines_data, OUTPUT_HEADLINES_FILE)
+                headlines_to_email = headlines_to_email + translated_headlines_data
             except:
                 print(f'Failed to translate {idx} headlines list containing stripped {len(scrapped_new_list)} new headlines. Moving on...')
                 continue
-    print('FINISHED')
+        else:
+            print('All scrapped headlines are already in csv database. Consider running script later')
+    
+    # Send email with new headlines in 'headlines_to_email' list:
+    # To be added...
+    
+    # Writing headlines to db:
+    db_scrapper_inst.export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
+    
+    print('\nFINISHED')
+
 
 if __name__ == '__main__':
     main()
