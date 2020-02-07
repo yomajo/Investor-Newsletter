@@ -1,34 +1,22 @@
 from scrappers import VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper
 from translate import TranslateList
 from configparser import ConfigParser
+from datetime import datetime
 import csv
 
 # GLOBAL VARIABLES:
 CONFIG_FILE = 'config.ini'
 OUTPUT_HEADLINES_FILE = 'Output/Headlines_data.csv'
+FORMATTED_TIMESTAMP = datetime.today().strftime(r'%Y.%m.%d %H.%M')
+OUTPUT_SENT_TODAY_FILE = f'Output/Headlines_sent {FORMATTED_TIMESTAMP}.csv'
 
 
-def get_base_urls_from_config(config_file_path, section_name):
-    '''returns a list of base urls for source websites: 
-    order in list: vz, lrt, postimees... TO BE UPDATED'''
-    base_url_config = ConfigParser()
-    base_url_config.read(config_file_path)
-    base_urls_config = base_url_config.items(section_name)
-    base_urls = []
-    for _, b_url in base_urls_config:
-        print(f'Found this in config.ini: {b_url}. Adding it to list.')
-        base_urls.append(b_url)
-    return base_urls
-
-def get_desired_langs(config_file_path, section_name):
-    '''returns a list of target languages'''
-    lang_config = ConfigParser()
-    lang_config.read(config_file_path)
-    langs_config = lang_config.items(section_name)
-    desired_langs = []
-    for _, lang in langs_config:
-        desired_langs.append(lang)
-    return desired_langs
+def get_config_section_values(config_file_path, section_name):
+    '''returns section in config file values as list'''
+    config = ConfigParser()
+    config.read(config_file_path)
+    config_section_data = config.items(section_name)
+    return [value for _, value in config_section_data]
 
 def get_headline_urls_in_db(csvfile_path):
     '''returns list of urls in 'csv database' of already sent headlines'''
@@ -45,8 +33,8 @@ def reduce_raw_list(headlines_data_list, db_urls):
 
 
 def main():
-    base_urls = get_base_urls_from_config(CONFIG_FILE, 'BASE_URLS')
-    desired_langs = get_desired_langs(CONFIG_FILE, 'LANGUAGES')
+    base_urls = get_config_section_values(CONFIG_FILE, 'BASE_URLS')
+    desired_langs = get_config_section_values(CONFIG_FILE, 'LANGUAGES')
     urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
     raw_scrappers_output = []
 
@@ -97,6 +85,9 @@ def main():
     
     # Send email with new headlines in 'headlines_to_email' list:
     # To be added...
+
+    # Export translated, new headlines in separate csv:
+    db_scrapper_inst.export_list_to_csv(headlines_to_email, OUTPUT_SENT_TODAY_FILE)
     
     # Writing headlines to db:
     db_scrapper_inst.export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
