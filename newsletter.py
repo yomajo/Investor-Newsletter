@@ -9,6 +9,7 @@ CONFIG_FILE = 'config.ini'
 OUTPUT_HEADLINES_FILE = 'Output/Headlines_data.csv'
 FORMATTED_TIMESTAMP = datetime.today().strftime(r'%Y.%m.%d %H.%M')
 OUTPUT_SENT_TODAY_FILE = f'Output/Headlines_sent {FORMATTED_TIMESTAMP}.csv'
+SCRAPPERS = [VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper]
 
 
 def get_config_section_values(config_file_path, section_name):
@@ -31,42 +32,35 @@ def reduce_raw_list(headlines_data_list, db_urls):
     new_headline_data = [headline_data for headline_data in headlines_data_list if headline_data[1] not in db_urls]
     return new_headline_data
 
+def scrape_websites_headlines_to_list(base_urls, scrappers_list):
+    '''returns a list of website specific lists of lists headline data. Args: 
+    base_urls - list of website base url addresses from config file
+    scrappers_list - list of scrapper classes'''
+    raw_scrappers_output = []
+    for idx, ScrapperClass in enumerate(scrappers_list):
+        try:
+            scrapper_inst = ScrapperClass(base_urls[idx], CONFIG_FILE)
+            headlines_data = scrapper_inst.get_website_headlines_as_list()
+            raw_scrappers_output.append(headlines_data)
+        except:
+            print(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass}, proceeding to next website...')
+            continue
+    return raw_scrappers_output
 
 def main():
     base_urls = get_config_section_values(CONFIG_FILE, 'BASE_URLS')
     desired_langs = get_config_section_values(CONFIG_FILE, 'LANGUAGES')
     urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
-    raw_scrappers_output = []
 
     # Scrape and output results into raw_scrappers_output list for each website
-    vz_scrapper_inst = VzScrapper(base_urls[0], CONFIG_FILE)
-    vz_headlines_list = vz_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(vz_headlines_list)
-
-    lrt_scrapper_inst = LrtScrapper(base_urls[1], CONFIG_FILE)
-    lrt_headlines_list = lrt_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(lrt_headlines_list)
-
-    err_scrapper_inst = ERRScrapper(base_urls[2], CONFIG_FILE)
-    err_headlines_list = err_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(err_headlines_list)
-
-    postimees_scrapper_inst = PostimeesScrapper(base_urls[3], CONFIG_FILE)
-    postimees_headlines_list = postimees_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(postimees_headlines_list)
-    
-    btimes_scrapper_inst = BalticTimesScrapper(base_urls[4], CONFIG_FILE)
-    btimes_headlines_list = btimes_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(btimes_headlines_list)
-
-    db_scrapper_inst = DbScrapper(base_urls[5], CONFIG_FILE)
-    db_headlines_list = db_scrapper_inst.get_website_headlines_as_list()
-    raw_scrappers_output.append(db_headlines_list)
+    raw_scrappers_output = scrape_websites_headlines_to_list(base_urls, SCRAPPERS)
 
     print('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------')
+    # Instance to use export to csv method inside a class:
+    db_scrapper_inst = DbScrapper(base_urls[5], CONFIG_FILE)
 
     for idx, scrapped_list in enumerate(raw_scrappers_output):
-        # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)
+        # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)        
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
         scrapped_new_list = reduce_raw_list(scrapped_list, urls_in_db)

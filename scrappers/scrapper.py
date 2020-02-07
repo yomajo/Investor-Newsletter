@@ -57,21 +57,17 @@ class Scrapper():
         if r.status_code == 200:
             return r
         else:
-            print(f'While passing url: {url} server responded with code: {r.status_code}.')
-            return None
+            Exception(f'Server did not respond well. Response code: {r.status_code} while accessing {url}')
 
     def scrape_category(self, response):
         '''---OVERWRITE WHEN INHERITING---'''
         '''collects links and article headlines within passed category response'''
-        if response != None:
-            self.category_results = []
-        #     # Pass corresponding html element and CSS class to  
-        #     self.content_container = self.get_content_container(response, 'HTML_ELEMENT', 'CSS_CLASS')
-        #     feature_article_data = get_category_feature_article(self.content_container)
-        #     self.category_results.append(feature_article_data)
-        #     get_category_articles(self.content_container, self.category_results)
-        else:
-            print('Server did not respond well')
+        self.category_results = []
+        # # Pass corresponding html element and CSS class to
+        # self.content_container = self.get_content_container(response, 'HTML_ELEMENT', 'CSS_CLASS')
+        # feature_article_data = get_category_feature_article(self.content_container)
+        # self.category_results.append(feature_article_data)
+        # get_category_articles(self.content_container, self.category_results)
 
     def get_content_container(self, response, html_element, css_class):
         '''---OVERWRITE WHEN INHERITING---'''
