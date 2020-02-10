@@ -62,6 +62,7 @@ class Scrapper():
             return r
         else:
             logger.exception(f'Server did not respond well. Response code: {r.status_code} while accessing {url}')
+            raise Exception
 
     def scrape_category(self, response):
         '''---OVERWRITE WHEN INHERITING---'''
