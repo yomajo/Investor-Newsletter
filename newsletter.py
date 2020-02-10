@@ -7,7 +7,7 @@ import logging.handlers
 import csv
 
 # LOGGING CONFIG:
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter('\n%(levelname)s:%(module)s: %(message)s :%(funcName)s')
