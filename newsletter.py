@@ -11,7 +11,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter('\n%(levelname)s:%(module)s: %(message)s :%(funcName)s')
-file_handler = logging.handlers.RotatingFileHandler('newsletter.log', maxBytes=10000, backupCount=3)
+file_handler = logging.handlers.RotatingFileHandler('newsletter.log', maxBytes=10**6, backupCount=3)
 file_handler.setFormatter(formatter)
 
 # Additional Console logging
