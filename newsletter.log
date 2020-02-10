@@ -1,0 +1,12 @@
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=206361.366074&q=Lietuv%C4%81+pl%C4%81no+atbr%C4%ABvot+no+pe%C4%BC%C5%86as+nodok%C4%BCa+lielos+investorus HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=168811.270472&q=INVL+Baltic+Sea+Growth+Fund+mekl%C4%93s+uz%C5%86%C4%93mumus+invest%C4%ABcij%C4%81m HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=91408.513779&q=Apdro%C5%A1in%C4%81t%C4%81ji+audz%C4%93+pr%C4%93mijas+un+p%C4%81riet+uz+digit%C4%81lajiem+risin%C4%81jumiem HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=583581.939134&q=%C4%B6%C4%ABnas+naftas+pat%C4%93ri%C5%86%C5%A1+saruk%C5%A1ot+par+25%25 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=923701.568278&q=Bir%C5%BEu+indeksi+pieaug%2C+%C4%B6%C4%ABnai+samazinot+muitas+tarifus+ASV+prec%C4%93m HTTP/1.1" 200 None :_make_request
+
+INFO:translate: Sleeping after querying google API for 100 seconds... ZZzz... :get_translation_obj
