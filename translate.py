@@ -24,6 +24,7 @@ class TranslateList():
         for lang in self.desired_lang_list:
             if lang not in LANGUAGES:
                 logger.exception(f'Passed target language for TranslateList class {lang} is not supported by googletrans library')
+                raise Exception
         return True
 
     def strip_src_to_headings(self):
@@ -48,6 +49,7 @@ class TranslateList():
             continue
         if len(detected_langs) != 1:
             logger.exception(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
+            raise Exception
         return detected_langs[0]
 
     def delete_member(self, idx):
@@ -63,6 +65,7 @@ class TranslateList():
             sleep(self.sleep_time)
         except:
             logger.exception('Failed to create lang translation objects')
+            raise Exception
 
     def bulk_translate(self, list_to_translate, src_lang, trg_lang):
         '''translate passed list from src_lang to trg_lang'''
@@ -74,6 +77,7 @@ class TranslateList():
             return translated_headlines
         except:
             logger.exception(f'Error occured while translating {translation} among {len(self.translation_objs)} members')
+            raise Exception
 
     def lists_same_length(self, src_list, translated_list):
         '''simply compared lengths of passed lists'''
@@ -88,6 +92,7 @@ class TranslateList():
             return output_translated_list
         else:
             logger.exception(f'Could not map lists while constructing output. translated_list len: {len(translated_list)} while src_list len: {len(self.src_list)}')
+            raise Exception
 
     def get_total_chars(self, list_to_calc):
         '''prints out total characters passed to be proccessed to google translate'''
