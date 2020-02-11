@@ -123,21 +123,6 @@ class Scrapper():
                 unique_records.append(headline_info)
         return unique_records
 
-    def write_or_append_output(self, output_csv_file):
-        '''Check if output file exists and return according option for with-open context manager'''
-        if os.path.exists(output_csv_file):
-            return 'a'
-        else:
-            return 'w'
-
-    def export_list_to_csv(self, output_data, output_filename):
-        '''write output contents to csv file'''
-        w_a_option = self.write_or_append_output(output_filename)
-        with open(output_filename, w_a_option, newline='') as f:
-            csv_writer = csv.writer(f, delimiter='\t')
-            for headline_info in output_data:
-                csv_writer.writerow(headline_info)
-    
 
 if  __name__ == '__main__':
     pass
