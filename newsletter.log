@@ -1,12 +1,738 @@
 
-DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=206361.366074&q=Lietuv%C4%81+pl%C4%81no+atbr%C4%ABvot+no+pe%C4%BC%C5%86as+nodok%C4%BCa+lielos+investorus HTTP/1.1" 200 None :_make_request
+INFO:newsletter: ------------------------------------FRESH START ON 2020.02.11 20.48------------------------------------ :main
 
-DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=168811.270472&q=INVL+Baltic+Sea+Growth+Fund+mekl%C4%93s+uz%C5%86%C4%93mumus+invest%C4%ABcij%C4%81m HTTP/1.1" 200 None :_make_request
+INFO:scrapper: Reading config file config.ini contents from section: VZSCRAPPER :get_categs_list
 
-DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=91408.513779&q=Apdro%C5%A1in%C4%81t%C4%81ji+audz%C4%93+pr%C4%93mijas+un+p%C4%81riet+uz+digit%C4%81lajiem+risin%C4%81jumiem HTTP/1.1" 200 None :_make_request
+INFO:scrapper: New request for category: rinkos :get_website_headlines_as_list
 
-DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=583581.939134&q=%C4%B6%C4%ABnas+naftas+pat%C4%93ri%C5%86%C5%A1+saruk%C5%A1ot+par+25%25 HTTP/1.1" 200 None :_make_request
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
 
-DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=923701.568278&q=Bir%C5%BEu+indeksi+pieaug%2C+%C4%B6%C4%ABnai+samazinot+muitas+tarifus+ASV+prec%C4%93m HTTP/1.1" 200 None :_make_request
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /rinkos HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.971435 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: pramone :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /pramone HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.373997 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: finansai-apskaita :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /finansai-apskaita HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.280901 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: verslo-aplinka :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /verslo-aplinka HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.57259 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: technologijos-mokslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /technologijos-mokslas HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.261061 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: LRTSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: naujienos/verslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.lrt.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.lrt.lt:443 "GET /naujienos/verslas HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.343481 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: ERRSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: k/majandus :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.err.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://www.err.ee:443 "GET /k/majandus HTTP/1.1" 200 34165 :_make_request
+
+INFO:scrapper: Server response time: 0.242695 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: POSTIMEESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: search :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): majandus24.postimees.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://majandus24.postimees.ee:443 "GET /search HTTP/1.1" 200 14335 :_make_request
+
+INFO:scrapper: Server response time: 0.32467 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: BALTICTIMESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: news_business :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.baltictimes.com:443 :_new_conn
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business HTTP/1.1" 301 0 :_make_request
+
+DEBUG:connectionpool: Starting new HTTP connection (1): www.baltictimes.com:80 :_new_conn
+
+DEBUG:connectionpool: http://www.baltictimes.com:80 "GET /news_business/ HTTP/1.1" 301 250 :_make_request
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business/ HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.291665 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: DBSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: sadalas/ekonomika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/ekonomika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.167854 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/finanses :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/finanses HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.13912 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/energetika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/energetika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.189665 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/start-up :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/start-up HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.192918 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/investors :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/investors HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.207722 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/razosana :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/razosana HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.14641 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:newsletter: ------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING :main
+
+DEBUG:newsletter: Exporting raw data (97 headlines) from https://www.vz.lt/ to Output/Headlines_data(0).csv :main
+
+INFO:newsletter: Scrapped 97 headlines from https://www.vz.lt/. New headlines found: 63 :main
+
+DEBUG:newsletter: 63 new headlines from ---https://www.vz.lt/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 3836
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 43, detect_obj: sl:0.8571396143016947, content: „Danske Bank“ rezultatai: pelnas virðijo prognozes. Deleting member :get_headlines_list_lang
+
+INFO:translate: Returning without translation. Detected lang 'lt' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 62 headlines from https://www.vz.lt/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (25 headlines) from https://www.lrt.lt/ to Output/Headlines_data(1).csv :main
+
+INFO:newsletter: Scrapped 25 headlines from https://www.lrt.lt/. New headlines found: 25 :main
+
+DEBUG:newsletter: 25 new headlines from ---https://www.lrt.lt/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 2034
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+INFO:translate: Returning without translation. Detected lang 'lt' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 25 headlines from https://www.lrt.lt/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (50 headlines) from https://www.err.ee/ to Output/Headlines_data(2).csv :main
+
+INFO:newsletter: Scrapped 50 headlines from https://www.err.ee/. New headlines found: 25 :main
+
+DEBUG:newsletter: 25 new headlines from ---https://www.err.ee/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 1603
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+INFO:translate: Detected language in passed list: et, translating... :get_translated
+
+DEBUG:translate: ---Before requesting google API--- :get_translation_obj
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): translate.google.com:443 :_new_conn
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET / HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=894994.728040&q=Eesti+Energia+liigub+edasi+elektriautode+laadimisv%C3%B5rgu+arendamisega HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=99877.472543&q=Alkoholiaktsiisi+laekus+varasema+aastaga+v%C3%B5rreldes+v%C3%A4hem HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=524661.963215&q=Turba-Rohuk%C3%BCla+raudtee+projekt+valmib+2021.+aasta+l%C3%B5puks HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=865628.755366&q=Huko+Aasp%C3%B5llu%3A+koroonaviiruse+majandusm%C3%B5jusid+ei+saa+veel+hinnata HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=106852.463518&q=Barnier+kutsus+%C3%9Chendkuningriiki+%C3%BCles+%C3%B5iglasele+kaubandusleppele HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=693899.796017&q=Sanoma+ostab+Alma+Medialt+15+ajalehte%2C+sealhulgas+p%C3%A4evalehe+Aamulehti HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=78198.492172&q=VKG+juhid+Ratasele%3A+kui+rohelepe+teeb+kahju+%C3%B5lit%C3%B6%C3%B6stusele%2C+peab+riik+selle+kompenseerima HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=984726.636268&q=USA+esitas+reitinguagentuuri+r%C3%BCndamises+s%C3%BC%C3%BCdistuse+neljale+Hiina+s%C3%B5jav%C3%A4elasele HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=531916.962102&q=Coop+Pank+kasvatas+mullu+%C3%A4rimahtu+40+protsendi+v%C3%B5rra HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=594827.1024113&q=Vene+v%C3%A4etisetootja+avas+Sillam%C3%A4e+sadamas+70+miljonit+eurot+maksnud+terminali HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=41088.398202&q=Fjuk%3A+Tallinn+andis+kaubamaja+arhitektuuriv%C3%B5istlusele+eksliku+l%C3%A4hte%C3%BClesande HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=142070.301324&q=Trumpi+s%C3%B5nul+on+aeg+ette+v%C3%B5tta+kaubandusk%C3%B5nelused+Euroopaga HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=541751.980941&q=Eelarvevolinik+julgustab+Eestit+rohep%C3%B6%C3%B6ret+tegema HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=337.438955&q=Johnson+tahab+%C5%A0otimaa+ja+P%C3%B5hja-Iirimaa+vahele+silla+ehitada HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=404040.39346&q=Soome+energiaturg+tegi+ajalugu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=481071.124117&q=Eestit+k%C3%BClastavad+enim+Soome+turistid%2C+kuid+kiiresti+kasvab+L%C3%A4ti+turistide+hulk HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=13309.425991&q=Trumpi+4%2C8+triljonine+eelarve+sisaldab+juba+tagasil%C3%BCkatuid+k%C3%A4rpeid HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=803904.718778&q=2019.+aasta+maksulaekumine+%C3%BCletas+eelarves+planeeritut HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=791681.698235&q=Riigi+%C3%A4ri%C3%BChingute+nimetamiskomitee+valis+esimeheks+Kaido+Padari HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=437908.7534&q=Kolmap%C3%A4eval+s%C3%B5lmitakse+leping+Rail+Balticu+viimase+Eesti-l%C3%B5igu+projekteerimiseks HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=601754.1023328&q=Maksuameti+kunagine+otsus+vabastab+jagamismajanduse+t%C3%B6%C3%B6j%C3%B5umaksude+tasumisest HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=841863.682877&q=Suurbritannia+kavatseb+luua+10+vabasadamat%2C+et+elavdada+majandust HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=290321.187883&q=Elektri+hind+langeb+%C3%B6%C3%B6sel+peaaegu+nulli%2C+Soomes+ja+Taanis+lausa+alla+nulli HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=353000.250130&q=AK+N%C3%A4dal%3A+koroonaviirus+m%C3%B5jutab+turismi+ja+tekitab+p%C3%B5hjendamatult+hirmu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=541942.980748&q=Nafta+maailmaturu+hinnad+langesid HTTP/1.1" 200 None :_make_request
+
+DEBUG:translate: ---After requesting google API--- :get_translation_obj
 
 INFO:translate: Sleeping after querying google API for 100 seconds... ZZzz... :get_translation_obj
+
+DEBUG:translate: Successfully translated 0/25; output: Eesti Energia is moving forward the development of electric cars charging network :bulk_translate
+
+DEBUG:translate: Successfully translated 1/25; output: Alcohol excise tax was collected the previous year, compared with less :bulk_translate
+
+DEBUG:translate: Successfully translated 2/25; output: Peat-Rohuküla rail project will be completed by the end of 2021 :bulk_translate
+
+DEBUG:translate: Successfully translated 3/25; output: Huko Aaspõllu: coronavirus economic effects can not yet be assessed :bulk_translate
+
+DEBUG:translate: Successfully translated 4/25; output: Barnier called on the UK to fair trade treaty :bulk_translate
+
+DEBUG:translate: Successfully translated 5/25; output: Sanoma purchases Alma Media: 15 newspapers, including newspaper Aamulehti :bulk_translate
+
+DEBUG:translate: Successfully translated 6/25; output: VKG leaders Ratas: if green pact does damage to the oil industry, the state must compensate :bulk_translate
+
+DEBUG:translate: Successfully translated 7/25; output: US rating agency filed the accusation of attacking four Chinese military personnel :bulk_translate
+
+DEBUG:translate: Successfully translated 8/25; output: Coop Bank last year increased its business volume by 40 percent :bulk_translate
+
+DEBUG:translate: Successfully translated 9/25; output: Russian fertilizer producer opened the port of Sillamae 70 million paid for the terminal :bulk_translate
+
+DEBUG:translate: Successfully translated 10/25; output: Fjuk: Tallinn department store in the architectural competition for the erroneous initial assignment :bulk_translate
+
+DEBUG:translate: Successfully translated 11/25; output: Trump says it's time to take down the trade talks with Europe :bulk_translate
+
+DEBUG:translate: Successfully translated 12/25; output: Budget Commissioner encourages Estonia to turn green :bulk_translate
+
+DEBUG:translate: Successfully translated 13/25; output: Johnson wants to Scotland and Northern Ireland, to build a bridge between :bulk_translate
+
+DEBUG:translate: Successfully translated 14/25; output: Finnish energy market made history :bulk_translate
+
+DEBUG:translate: Successfully translated 15/25; output: Most tourists visiting Estonia with Finland, but the rapidly growing number of tourists in Latvia :bulk_translate
+
+DEBUG:translate: Successfully translated 16/25; output: Trump 4.8 trillion budget includes cuts already rejected :bulk_translate
+
+DEBUG:translate: Successfully translated 17/25; output: In 2019, tax revenues exceeded planned in :bulk_translate
+
+DEBUG:translate: Successfully translated 18/25; output: State elected chairman of the Nomination companies Kaido Padar :bulk_translate
+
+DEBUG:translate: Successfully translated 19/25; output: On Wednesday, the contract is awarded Rail Baltic Estonia in the last paragraph of the design :bulk_translate
+
+DEBUG:translate: Successfully translated 20/25; output: Tax decision to release former jagamismajanduse labor tax :bulk_translate
+
+DEBUG:translate: Successfully translated 21/25; output: Britain plans to create 10 Freeport to revive the economy :bulk_translate
+
+DEBUG:translate: Successfully translated 22/25; output: The price of electricity will drop to almost zero at night, Finland and Denmark, even below zero :bulk_translate
+
+DEBUG:translate: Successfully translated 23/25; output: AK Week: coronavirus affects tourism and creates undue fear :bulk_translate
+
+DEBUG:translate: Successfully translated 24/25; output: World oil prices fell :bulk_translate
+
+DEBUG:translate: Outputing translated output :get_translated
+
+INFO:newsletter: 25 headlines from https://www.err.ee/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (40 headlines) from https://majandus24.postimees.ee/ to Output/Headlines_data(3).csv :main
+
+INFO:newsletter: Scrapped 40 headlines from https://majandus24.postimees.ee/. New headlines found: 40 :main
+
+DEBUG:newsletter: 40 new headlines from ---https://majandus24.postimees.ee/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 2222
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+INFO:translate: Detected language in passed list: et, translating... :get_translated
+
+DEBUG:translate: ---Before requesting google API--- :get_translation_obj
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): translate.google.com:443 :_new_conn
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET / HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=533497.954371&q=Soome+meediagigant+m%C3%BC%C3%BCb+maalehed+konkurendile HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=660250.827616&q=Uuring%3A+Saaremaa+ja+L%C3%A4%C3%A4neranna+elanikud+eelistavad+p%C3%BCsi%C3%BChendust+%C3%BCle+v%C3%A4ina HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=510723.96505&q=Soome+paadit%C3%B6%C3%B6stust+veab+eksport%2C+kohapeal+l%C3%A4hevad+m%C3%BC%C3%BCgiks+v%C3%A4iksemad+mootorpaadid HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=986664.638418&q=Eesti+Energia+panustab+elektriautode+revolutsiooni HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=197975.374445&q=%C3%95htul+otse%3A+ilmavalgust+n%C3%A4eb+neli+Samsungi+tippmobiili HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=40970.398320&q=Digiriik+vedas+alt%3A+paljud+inimesed+said+alusetult+maamaksuteate HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=729350.889596&q=Kliente+t%C3%BCssanud+veebipood+on+pankrotikursil%3A+mis+saab+v%C3%B5lgadest%3F HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=21779.452329&q=Kaubamaht+merel+ja+raudteel+liigub+vastassuunas HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=614674.1037032&q=P%C3%B5levkivit%C3%B6%C3%B6stur+Ratasele%3A+kui+rohelepe+meile+kahju+teeb%2C+peab+riik+selle+kinni+maksma HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=5929.435411&q=Coop+Panga+head+tulemused+panid+aktsia+kukkuma HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=630537.994547&q=Eksklusiivintervjuu+sajandi+armukelmiga%3A+%C2%ABMuidugi+ma+olen+s%C3%BC%C3%BCdi%21%C2%BB HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=34516.406830&q=Oscari-sadu+lennutas+%C2%ABParasiidi%C2%BB+tootja+aktsia+taevasse HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=110840.459522&q=Oht+Eesti+julgeolekule%3A+S%C3%B5najalgade+uued+tembud+said+karmi+ettekirjutuse HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=684963.835673&q=Coop+Pank+kasvab+meeletu+kiirusega HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=910518.743244&q=Hiigelinvesteering%3A+Vene+ammoniaagivedu+t%C3%B5stab+Eesti+transiiti+uuesti+jalule HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=732110.890932&q=Bion%C3%B5ue+ajas+diislik%C3%BCtust+varuma HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=493137.79275&q=ANAL%C3%9C%C3%9CS%3A+L%C3%A4hiaastatel+v%C3%B5ib+nafta+hind+teha+s%C3%B6%C3%B6stu+%C3%BCles HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=169572.271774&q=Volvo+Cars+ja+Geely+plaanivad+%C3%BChinemist HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=694185.795731&q=Klientidega+pahuksis+veebipood+sulges+kodulehe HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=300680.140658&q=SEB+anal%C3%BC%C3%BCtik%3A+koroonaviirus+v%C3%B5ib+tuua+t%C3%A4ieliku+majanduslanguse HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=845502.677188&q=EASil+ja+e-residentsusel+oli+koduleht+maas HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=422885.49183&q=Eesti+iduettev%C3%B5tete+arv+%C3%BCletas+1000+piiri HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=902082.749624&q=Uuring%3A+t%C3%B6%C3%B6tajate+palk+j%C3%B5uab+unistustele+aina+l%C3%A4hemale HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=650625.1007227&q=Biolisandi+n%C3%B5ue+ajas+hiigelkoguses+diislik%C3%BCtust+varuma HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=705672.817010&q=Soomes+kukkus+elektri+hind+esimest+korda+miinusesse HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=729252.889694&q=Meeldetuletus%3A+Swedbank+kaotab+preemiaprogrammi HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=128646.476540&q=Silja+Europa+remont+venib%2C+tema+asemel+kurseerib+Helsingi-Tallinna+liinil+Victoria+I HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=251806.353380&q=Kriitika+alla+sattunud+uus+nimetamiskomitee+sai+juhi HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=827399.660477&q=Rahakott+valmis%3A+maamaks+koputab+uksele HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=712727.807917&q=L%C3%A4ti+politsei+uurib+1%2C5+miljardi+dollari+kadumist HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=810641.716139&q=Liit+h%C3%A4das%3A+kinomaja+lekkiv+katus+v%C3%B5ib+viia+hoone+s%C3%BCttimiseni HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=868487.783229&q=Tuludeklaratsioon+2020%3A+mida+tasub+meeles+pidada%3F HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=389652.213486&q=Suured+tehnoloogiagigandid+h%C3%BClgavad+maailma+mobiilikongressi HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=567432.924530&q=Mullu+tehti+nelja+miljardi+v%C3%A4%C3%A4rtuses+kinnisvaratehinguid HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=236857.339651&q=Kaupade+import+v%C3%A4henes+mullu+protsendi+v%C3%B5rra HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=318221.157943&q=Majutusettev%C3%B5tetes+peatuvate+turistide+arv+kerkis+mullu+3%2C8+miljonini HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=14848.428538&q=Fondid+magasid+maha%2C+et+k%C3%B5rged+tasud+on+probleem HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=608693.1047119&q=Kelmide+ohvreid+tuleb+robinal+juurde HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=578915.943769&q=Mis+on+saanud+Armin+Karu+Olympicu+aktsiate+eest+saadud+136+miljonist+eurost%3F HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=et&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=229514.340848&q=Seksistlik+nali+l%C3%A4ks+fondijuhile+maksma+neli+miljardit+dollarit HTTP/1.1" 200 None :_make_request
+
+DEBUG:translate: ---After requesting google API--- :get_translation_obj
+
+INFO:translate: Sleeping after querying google API for 100 seconds... ZZzz... :get_translation_obj
+
+DEBUG:translate: Successfully translated 0/40; output: Finnish media giant competitor sells Maaleht :bulk_translate
+
+DEBUG:translate: Successfully translated 1/40; output: Study: Saaremaa and Western Coastal residents prefer permanent link across the Strait :bulk_translate
+
+DEBUG:translate: Successfully translated 2/40; output: Finnish boat industry driven by exports, the spot will be smaller motor boats for sale :bulk_translate
+
+DEBUG:translate: Successfully translated 3/40; output: Eesti Energia contributes to the electric car revolution :bulk_translate
+
+DEBUG:translate: Successfully translated 4/40; output: In the evening directly: Samsung sees the light of the four top mobile :bulk_translate
+
+DEBUG:translate: Successfully translated 5/40; output: Digital Country was carrying under: many people were wrongly property tax notice :bulk_translate
+
+DEBUG:translate: Successfully translated 6/40; output: Clients cheated the Web Store is on track bankruptcy: What debts? :bulk_translate
+
+DEBUG:translate: Successfully translated 7/40; output: The volume of goods at sea and rail moves in the opposite direction :bulk_translate
+
+DEBUG:translate: Successfully translated 8/40; output: Oil shale industry Ratas: if green arrangement makes us harm, the state must pay for the stick :bulk_translate
+
+DEBUG:translate: Successfully translated 9/40; output: Coop Bank put a good performance shares fall :bulk_translate
+
+DEBUG:translate: Successfully translated 10/40; output: Exclusive armukelmiga century: "Of course I'm guilty!" :bulk_translate
+
+DEBUG:translate: Successfully translated 11/40; output: Oscar flew hundreds of "Parasite" manufacturer's share in heaven :bulk_translate
+
+DEBUG:translate: Successfully translated 12/40; output: The threat to the security of Estonia: New ferns whimsy were harsh injunction :bulk_translate
+
+DEBUG:translate: Successfully translated 13/40; output: Coop Bank is growing at a frantic pace :bulk_translate
+
+DEBUG:translate: Successfully translated 14/40; output: Hiigelinvesteering Russian ammoniaagivedu raises the transit of Estonia on its feet again :bulk_translate
+
+DEBUG:translate: Successfully translated 15/40; output: Bionõue time to stock up on diesel fuel :bulk_translate
+
+DEBUG:translate: Successfully translated 16/40; output: ANALYSIS: In the coming years, oil prices could make a dash up :bulk_translate
+
+DEBUG:translate: Successfully translated 17/40; output: Volvo Cars and Geely plan to merge :bulk_translate
+
+DEBUG:translate: Successfully translated 18/40; output: With customers in trouble online store shut website :bulk_translate
+
+DEBUG:translate: Successfully translated 19/40; output: SEB analyst: coronavirus can bring a full recession :bulk_translate
+
+DEBUG:translate: Successfully translated 20/40; output: EE to the web site, e-residency behind :bulk_translate
+
+DEBUG:translate: Successfully translated 21/40; output: Estonian start-up businesses in 1000 exceeded the number of border :bulk_translate
+
+DEBUG:translate: Successfully translated 22/40; output: Study: staff salary will reach the dream of ever closer :bulk_translate
+
+DEBUG:translate: Successfully translated 23/40; output: Biolisandi copious amounts of diesel fuel requirement in time to stock up :bulk_translate
+
+DEBUG:translate: Successfully translated 24/40; output: In Finland, the price of electricity fell into negative territory for the first time :bulk_translate
+
+DEBUG:translate: Successfully translated 25/40; output: Reminder: Swedbank loses the bonus program :bulk_translate
+
+DEBUG:translate: Successfully translated 26/40; output: Silja Europa repairing stretches her instead of sailing the Helsinki-Tallinn route, Victoria I. :bulk_translate
+
+DEBUG:translate: Successfully translated 27/40; output: Criticized the Nomination got a new driver :bulk_translate
+
+DEBUG:translate: Successfully translated 28/40; output: Wallet ready: the property tax is knocking on the door :bulk_translate
+
+DEBUG:translate: Successfully translated 29/40; output: Latvian police investigating the disappearance of 1.5 billion dollars :bulk_translate
+
+DEBUG:translate: Successfully translated 30/40; output: Union is in trouble: the cinema house leaky roof can lead to the building lights up :bulk_translate
+
+DEBUG:translate: Successfully translated 31/40; output: Tax return 2020: to keep in mind? :bulk_translate
+
+DEBUG:translate: Successfully translated 32/40; output: Large tehnoloogiagigandid forsake the world mobile congress :bulk_translate
+
+DEBUG:translate: Successfully translated 33/40; output: Last year it was four billion worth of real estate transactions :bulk_translate
+
+DEBUG:translate: Successfully translated 34/40; output: Imports of goods decreased last year by the percentage :bulk_translate
+
+DEBUG:translate: Successfully translated 35/40; output: The number of tourists staying at accommodation establishments rose to 3.8 million last year :bulk_translate
+
+DEBUG:translate: Successfully translated 36/40; output: Funds were sleeping off that high fees are a problem :bulk_translate
+
+DEBUG:translate: Successfully translated 37/40; output: Crooks victims to be Robina :bulk_translate
+
+DEBUG:translate: Successfully translated 38/40; output: What happened to Armin Karu, Olympic 136 million for shares received? :bulk_translate
+
+DEBUG:translate: Successfully translated 39/40; output: Sexist joke went a fund manager to pay four billion dollars :bulk_translate
+
+DEBUG:translate: Outputing translated output :get_translated
+
+INFO:newsletter: 40 headlines from https://majandus24.postimees.ee/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (15 headlines) from https://www.baltictimes.com/ to Output/Headlines_data(4).csv :main
+
+INFO:newsletter: Scrapped 15 headlines from https://www.baltictimes.com/. New headlines found: 6 :main
+
+DEBUG:newsletter: 6 new headlines from ---https://www.baltictimes.com/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 420
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 1, detect_obj: fr:0.8571386341511822, content: Ventspils yacht port: sustainable development. Deleting member :get_headlines_list_lang
+
+INFO:translate: Returning without translation. Detected lang 'en' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 5 headlines from https://www.baltictimes.com/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (100 headlines) from https://www.db.lv/ to Output/Headlines_data(5).csv :main
+
+INFO:newsletter: Scrapped 100 headlines from https://www.db.lv/. New headlines found: 36 :main
+
+DEBUG:newsletter: 36 new headlines from ---https://www.db.lv/--- being passed to TranslateList :main
+
+INFO:translate: Calculated total number characters in passed headlines list is 1896
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 2, detect_obj: lv:0.8571416187997359, content: Depo DIY overdraftu palielina lîdz 60 miljoniem eiro. Deleting member :get_headlines_list_lang
+
+INFO:translate: Detected language in passed list: lv, translating... :get_translated
+
+DEBUG:translate: ---Before requesting google API--- :get_translation_obj
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): translate.google.com:443 :_new_conn
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET / HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=892807.732285&q=Nosl%C4%93dzies+R%C4%ABgas+atkritumu+apsaimnieko%C5%A1anas+iepirkums HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=531718.962300&q=Savieno+lietot%C4%81jus+ar+iek%C4%81rtas+%22smadzen%C4%93m%22 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=824332.665590&q=YIT+Infra+Latvija+iev%C4%93l%C4%93ta+jauna+valdes+priek%C5%A1s%C4%93d%C4%93t%C4%81ja HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=295575.143725&q=Energoresursu+cenas+kritu%C5%A1%C4%81s+l%C4%ABdz+rekordzem%C4%81m+atz%C4%ABm%C4%93m HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=568806.925212&q=Rund%C4%81les+pils+jumta+p%C4%81rb%C5%ABvei+izsludin%C4%81ts+1%2C5+miljonu+eiro+v%C4%93rts+iepirkums HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=662183.829789&q=Klimata+p%C4%81rmai%C5%86u+panika+p%C4%81rk%C4%81pusi+visas+iesp%C4%93jam%C4%81s+robe%C5%BEas HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=201196.369174&q=Anim%C4%81ciju+izmanto+pla%C5%A1%C4%81k HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=963197.524679&q=Gaida+uz+banku+finans%C4%93jumu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=119282.483848&q=Latvijas+att%C4%ABst%C4%ABba+caur+M%C4%81rupes+prizmu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=79943.494525&q=Burovs+no+R%C4%ABgas+b%C5%ABvvaldes+vad%C4%ABt%C4%81ja+amata+atst%C4%81din%C4%81jis+Vircavu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=182463.293701&q=Atkl%C4%81s+arhitekt%C5%ABrai+un+t%C4%81s+v%C4%93sturei+velt%C4%ABtu+izst%C4%81di HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=894599.726397&q=FOTO%3A+Cik+liela+ir+minim%C4%81l%C4%81+alga+katr%C4%81+no+ES+valst%C4%ABm%3F HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=149903.326261&q=Mogotel+viesn%C4%ABcu+t%C4%ABklam+pievienojas+ibis+Styles+Riga HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=845418.677264&q=Tirdzniec%C4%ABbas+centr%C4%81+Pils%C4%93tas+pas%C4%81%C5%BEa+pl%C4%81nots+izveidot+kinote%C4%81tri HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=718524.804166&q=Refinans%C4%93+Locitech+grupas+aiz%C5%86%C4%93mumus+vair%C4%81k+nek%C4%81+miljona+apm%C4%93r%C4%81 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=97538.511736&q=FOTO%3A+Madona+%22atv%C4%93z%C4%93jusies%22+v%C4%93rien%C4%ABgam+estr%C4%81des+projektam HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=233585.336779&q=British+Airways+lidma%C5%A1%C4%ABna+sasniegusi+fenomen%C4%81lu+%C4%81trumu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=720330.806448&q=Iepirkum%C4%81+mekl%C4%93+m%C4%93beles+Valsts+prezidenta+rezidencei+J%C5%ABrmal%C4%81 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=634743.990349&q=VID+EDS+sist%C4%93mas+nepiln%C4%ABbas+rada+satraukumu HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=339755.236753&q=Lauksaimnieki+akt%C4%ABvi+aiz%C5%86emas+naudu+savu+saimniec%C4%ABbu+att%C4%ABst%C4%ABbai HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=526699.965265&q=Mazin%C4%81jies+uz%C5%86%C4%93mumu+piepras%C4%ABjums+p%C4%93c+aizdevumiem%2C+audzis+noraid%C4%ABto+kred%C4%ABtu+pieteikumu+%C4%ABpatsvars HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=942102.578540&q=Eksperts%3A+Vecumdien%C4%81m+kr%C4%81jiet+priv%C4%81tos+l%C4%ABdzek%C4%BCus HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=483512.119618&q=Pazi%C5%86oti+janv%C4%81ra+izlozes+%C4%8Deku+loterijas+uzvar%C4%93t%C4%81ji HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=678044.846694&q=Koronav%C4%ABrusa+izp%C4%81rdo%C5%A1an%C4%81+ierauta+ar%C4%AB+kafija HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=447951.26165&q=S%C4%81k+krimin%C4%81lprocesu+par+nodok%C4%BCu+%22apie%C5%A1anu%22+k%C4%81d%C4%81+autoservis%C4%81 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=163199.315013&q=Indexo+palielin%C4%81jusi+pamatkapit%C4%81lu+l%C4%ABdz+3+miljoniem+eiro HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=448331.25777&q=%22Pel%C4%93k%C4%81+saraksta%22+draudi+negat%C4%ABvi+iespaido+invest%C4%ABciju+piesaisti+no+valst%C4%ABm+%C4%81rpus+ES HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=876401.781451&q=Infic%C4%93s+ar%C4%AB+ekonomiku HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=930396.557478&q=Lietuv%C4%81+pl%C4%81no+atbr%C4%ABvot+no+pe%C4%BC%C5%86as+nodok%C4%BCa+lielos+investorus HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=71714.502744&q=INVL+Baltic+Sea+Growth+Fund+mekl%C4%93s+uz%C5%86%C4%93mumus+invest%C4%ABcij%C4%81m HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=827611.660257&q=Apdro%C5%A1in%C4%81t%C4%81ji+audz%C4%93+pr%C4%93mijas+un+p%C4%81riet+uz+digit%C4%81lajiem+risin%C4%81jumiem HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=698634.793328&q=%C4%B6%C4%ABnas+naftas+pat%C4%93ri%C5%86%C5%A1+saruk%C5%A1ot+par+25%25 HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=884848.734090&q=Bir%C5%BEu+indeksi+pieaug%2C+%C4%B6%C4%ABnai+samazinot+muitas+tarifus+ASV+prec%C4%93m HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=776262.879548&q=Asi%C5%86ainie+avokado+-+ne+tikai+dimanti HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: https://translate.google.com:443 "GET /translate_a/single?client=t&sl=lv&tl=en&hl=en&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=1&ssel=0&tsel=0&tk=950343.537533&q=K%C4%81+top%3F+Zieme%C4%BCu+Enkurs+alus HTTP/1.1" 200 None :_make_request
+
+DEBUG:translate: ---After requesting google API--- :get_translation_obj
+
+INFO:translate: Sleeping after querying google API for 100 seconds... ZZzz... :get_translation_obj
+
+DEBUG:translate: Successfully translated 0/35; output: Finished the Riga waste management procurement :bulk_translate
+
+DEBUG:translate: Successfully translated 1/35; output: Connects users with equipment "brain" :bulk_translate
+
+DEBUG:translate: Successfully translated 2/35; output: YIT Infra Latvia elected new Chairman of the Board :bulk_translate
+
+DEBUG:translate: Successfully translated 3/35; output: Energy prices dropped to a record low marks :bulk_translate
+
+DEBUG:translate: Successfully translated 4/35; output: Rundale palace roof conversion opened a 1.5 million euro worth buying :bulk_translate
+
+DEBUG:translate: Successfully translated 5/35; output: Climate change panic violated all possible boundaries :bulk_translate
+
+DEBUG:translate: Successfully translated 6/35; output: Animation used more widely :bulk_translate
+
+DEBUG:translate: Successfully translated 7/35; output: Waiting for bank financing :bulk_translate
+
+DEBUG:translate: Successfully translated 8/35; output: Latvian development through the prism Marupes :bulk_translate
+
+DEBUG:translate: Successfully translated 9/35; output: Burov from Riga Construction Board Head office suspended the Vircava :bulk_translate
+
+DEBUG:translate: Successfully translated 10/35; output: Will reveal the architecture and history of an exhibition :bulk_translate
+
+DEBUG:translate: Successfully translated 11/35; output: PHOTO: How much is the minimum wage in each of the EU countries? :bulk_translate
+
+DEBUG:translate: Successfully translated 12/35; output: Mogotel hotel network joins ibis Styles Riga :bulk_translate
+
+DEBUG:translate: Successfully translated 13/35; output: Shopping center in the city arcade is planned to create a movie theater :bulk_translate
+
+DEBUG:translate: Successfully translated 14/35; output: Locitech Group refinances loans more than million :bulk_translate
+
+DEBUG:translate: Successfully translated 15/35; output: PHOTO: Madona "atvçzçjusies" ambitious stage project :bulk_translate
+
+DEBUG:translate: Successfully translated 16/35; output: British Airways plane has reached a phenomenal rate :bulk_translate
+
+DEBUG:translate: Successfully translated 17/35; output: Procurement of furniture looking for the President's residence in Jurmala :bulk_translate
+
+DEBUG:translate: Successfully translated 18/35; output: SRS EDS system failures of concern :bulk_translate
+
+DEBUG:translate: Successfully translated 19/35; output: Farmers actively borrow money for your farm development :bulk_translate
+
+DEBUG:translate: Successfully translated 20/35; output: Decreased demand for corporate loans increased proportion of rejected loan applications :bulk_translate
+
+DEBUG:translate: Successfully translated 21/35; output: Expert: namely that aging store up for private funds :bulk_translate
+
+DEBUG:translate: Successfully translated 22/35; output: Announced in January lottery check lottery winners :bulk_translate
+
+DEBUG:translate: Successfully translated 23/35; output: Coronavirus on sale dragged into coffee :bulk_translate
+
+DEBUG:translate: Successfully translated 24/35; output: It begins to criminal tax "avoidance" in a workshop :bulk_translate
+
+DEBUG:translate: Successfully translated 25/35; output: Index has increased its capital to 3 million euros :bulk_translate
+
+DEBUG:translate: Successfully translated 26/35; output: "Gray list" of the threat of a negative impact on attracting investment from outside the EU :bulk_translate
+
+DEBUG:translate: Successfully translated 27/35; output: It infects the economy :bulk_translate
+
+DEBUG:translate: Successfully translated 28/35; output: Lithuania plans to exempt from profit tax large investors :bulk_translate
+
+DEBUG:translate: Successfully translated 29/35; output: INVL Baltic Sea Growth Fund will seek investments in companies :bulk_translate
+
+DEBUG:translate: Successfully translated 30/35; output: Insurers grown premium and switch to digital solutions :bulk_translate
+
+DEBUG:translate: Successfully translated 31/35; output: Chinese oil consumption sarukðot 25% :bulk_translate
+
+DEBUG:translate: Successfully translated 32/35; output: Exchanges indexes rise, China reducing customs tariffs on US goods :bulk_translate
+
+DEBUG:translate: Successfully translated 33/35; output: Bloody avocado - not just diamonds :bulk_translate
+
+DEBUG:translate: Successfully translated 34/35; output: As the top? Northern Anchor Beer :bulk_translate
+
+DEBUG:translate: Outputing translated output :get_translated
+
+INFO:newsletter: 35 headlines from https://www.db.lv/ have been successfully translated and added to headlines_to_email list :main
+
+INFO:newsletter: ------Translation finished. Exporting data, saving to database, sending emails... :main
+
+INFO:newsletter: ------------------------------------FINISHED------------------------------------ :main
