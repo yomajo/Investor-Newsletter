@@ -5,6 +5,7 @@ from datetime import datetime
 import logging
 import logging.handlers
 import csv
+from utils.utils import export_list_to_csv
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -45,8 +46,10 @@ def get_headline_urls_in_db(csvfile_path):
     logger.info(f'Collected {len(urls_in_db)} headlines in database.')
     return urls_in_db
 
-def reduce_raw_list(headlines_data_list, db_urls):
-    '''returns a list of headlines data, that are NOT yet in db_urls list'''
+def get_headlines_not_in_db(headlines_data_list, db_urls):
+    '''returns a list of headlines data, that are NOT yet in db_urls list. Args:
+    headlines_data_list example: [[headline1, url1], [headline2, url2], ...]
+    db_urls example: [url1, url2, ...]'''
     new_headline_data = [headline_data for headline_data in headlines_data_list if headline_data[1] not in db_urls]
     return new_headline_data
 
@@ -83,7 +86,7 @@ def main():
         # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)        
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
-        scrapped_new_headlines = reduce_raw_list(scrapped_list, urls_in_db)
+        scrapped_new_headlines = get_headlines_not_in_db(scrapped_list, urls_in_db)
         logger.debug(f'{len(scrapped_new_headlines)} new headlines from ---{base_urls[idx]}--- being passed to TranslateList')
         if scrapped_new_headlines:    
             translator = TranslateList(scrapped_new_headlines, desired_langs)
