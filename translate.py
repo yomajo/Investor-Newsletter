@@ -60,7 +60,9 @@ class TranslateList():
     def get_translation_obj(self, list_to_translate, src_lang, trg_lang):
         '''gets iterable translation object querying google translate'''
         try:
+            logger.debug('---Before requesting google API---')
             self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+            logger.debug('---After requesting google API---')
             logger.info(f'Sleeping after querying google API for {self.sleep_time} seconds... ZZzz...')
             sleep(self.sleep_time)
         except:
@@ -72,8 +74,9 @@ class TranslateList():
         translated_headlines = []
         try:
             self.get_translation_obj(list_to_translate, src_lang, trg_lang)
-            for translation in self.translation_objs:
+            for idx, translation in enumerate(self.translation_objs):
                 translated_headlines.append(translation.text)
+                logger.debug(f'Successfully translated {idx}/{len(self.translation_objs)}; output: {translation.text}')
             return translated_headlines
         except:
             logger.exception(f'Error occured while translating {translation} among {len(self.translation_objs)} members')
@@ -104,7 +107,6 @@ class TranslateList():
     def get_translated(self):
         '''if possible, returns translated list'''        
         if self.desired_langs_supported():
-            logger.info(f'Extracting headings from headline data lists')
             self.headlines = self.strip_src_to_headings()
             self.get_total_chars(self.headlines)
             logger.info(f'Detecting headlines list language consistency and original language')
@@ -114,6 +116,7 @@ class TranslateList():
                 logger.info(f'Detected language in passed list: {detected_src_lang}, translating...')
                 translated_headlines = self.bulk_translate(self.headlines, detected_src_lang, self.desired_lang_list[0])
                 translated_cls_output = self.construct_src_size_output(self.src_list, translated_headlines)
+                logging.debug('Outputing translated output')
                 return translated_cls_output
             else:
                 logger.info(f'Returning without translation. Detected lang \'{detected_src_lang}\' already in {self.desired_lang_list}')

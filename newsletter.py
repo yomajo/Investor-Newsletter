@@ -83,15 +83,17 @@ def main():
         # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)        
         db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
-        scrapped_new_list = reduce_raw_list(scrapped_list, urls_in_db)
-        logger.debug(f'New headlines for {base_urls[idx]} being passed to TranslateList: {len(scrapped_new_list)}')
-        if scrapped_new_list:    
-            translator = TranslateList(scrapped_new_list, desired_langs)
+        scrapped_new_headlines = reduce_raw_list(scrapped_list, urls_in_db)
+        logger.debug(f'{len(scrapped_new_headlines)} new headlines from ---{base_urls[idx]}--- being passed to TranslateList')
+        if scrapped_new_headlines:    
+            translator = TranslateList(scrapped_new_headlines, desired_langs)
             try:
                 translated_headlines_data = translator.get_translated()
+                logger.info(f'{len(translated_headlines_data)} headlines from {base_urls[idx]} have been successfully translated and added to headlines_to_email list')
                 headlines_to_email = headlines_to_email + translated_headlines_data
             except:
-                logger.warning(f'Failed to translate {idx} member in headlines list containing stripped {len(scrapped_new_list)} new headlines. Moving on...')
+                # Change to exception, 
+                logger.warning(f'Failed to translate {idx} member in headlines list containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
                 continue
         else:
             logger.warning('All scrapped headlines are already in csv database. Consider running script later')
