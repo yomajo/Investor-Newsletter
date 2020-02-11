@@ -4,8 +4,7 @@ from configparser import ConfigParser
 from datetime import datetime
 import logging
 import logging.handlers
-import csv
-from utils.utils import export_list_to_csv
+from utils import export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -38,21 +37,6 @@ def get_config_section_values(config_file_path, section_name):
     config_section_data = config.items(section_name)
     return [value for _, value in config_section_data]
 
-def get_headline_urls_in_db(csvfile_path):
-    '''returns list of urls in 'csv database' of already sent headlines'''
-    with open(csvfile_path, 'r') as csvfile:
-        csv_data = csv.reader(csvfile, delimiter='\t')
-        urls_in_db = [headline_data[1] for headline_data in csv_data]
-    logger.info(f'Collected {len(urls_in_db)} headlines in database.')
-    return urls_in_db
-
-def get_headlines_not_in_db(headlines_data_list, db_urls):
-    '''returns a list of headlines data, that are NOT yet in db_urls list. Args:
-    headlines_data_list example: [[headline1, url1], [headline2, url2], ...]
-    db_urls example: [url1, url2, ...]'''
-    new_headline_data = [headline_data for headline_data in headlines_data_list if headline_data[1] not in db_urls]
-    return new_headline_data
-
 def scrape_websites_headlines_to_list(base_urls, scrappers_list):
     '''returns a list of website specific lists of lists headline data. Args: 
     base_urls - list of website base url addresses from config file
@@ -77,16 +61,16 @@ def main():
     # Scrape and output results into raw_scrappers_output list for each website
     raw_scrappers_output = scrape_websites_headlines_to_list(base_urls, SCRAPPERS)
 
-    logger.info('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING, WRITING TO FILE START------')
-    # Instance to use export to csv method inside a class:
-    db_scrapper_inst = DbScrapper(base_urls[5], CONFIG_FILE)
+    logger.info('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING')
 
     headlines_to_email = []
     for idx, scrapped_list in enumerate(raw_scrappers_output):
         # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)        
-        db_scrapper_inst.export_list_to_csv(scrapped_list, 'Output/Headlines_data('+ str(idx) +').csv')
+        logger.debug(f'Exporting raw data ({len(scrapped_list)} headlines) from {base_urls[idx]} to Output/Headlines_data({idx}).csv')
+        export_list_to_csv(scrapped_list, 'Output/Headlines_data(' + str(idx) +').csv')
         # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
         scrapped_new_headlines = get_headlines_not_in_db(scrapped_list, urls_in_db)
+        logger.info(f'Scrapped {len(scrapped_list)} headlines from {base_urls[idx]}. New headlines found: {len(scrapped_new_headlines)}')
         logger.debug(f'{len(scrapped_new_headlines)} new headlines from ---{base_urls[idx]}--- being passed to TranslateList')
         if scrapped_new_headlines:    
             translator = TranslateList(scrapped_new_headlines, desired_langs)
@@ -95,20 +79,22 @@ def main():
                 logger.info(f'{len(translated_headlines_data)} headlines from {base_urls[idx]} have been successfully translated and added to headlines_to_email list')
                 headlines_to_email = headlines_to_email + translated_headlines_data
             except:
-                # Change to exception, 
-                logger.warning(f'Failed to translate {idx} member in headlines list containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
+                # Change to exception, upon new run
+                logger.warning(f'Failed to translate headlines from {base_urls[idx]} containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
                 continue
         else:
             logger.warning('All scrapped headlines are already in csv database. Consider running script later')
+
+    logger.info('------Translation finished. Exporting data, saving to database, sending emails...')
     
     # Send email with new headlines in 'headlines_to_email' list:
     # To be added...
 
     # Export translated, new headlines in separate csv:
-    db_scrapper_inst.export_list_to_csv(headlines_to_email, OUTPUT_SENT_TODAY_FILE)
+    export_list_to_csv(headlines_to_email, OUTPUT_SENT_TODAY_FILE)
     
     # Writing headlines to db:
-    db_scrapper_inst.export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
+    export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
     
     logger.info(f'------------------------------------FINISHED------------------------------------')
 
