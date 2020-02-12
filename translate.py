@@ -1,3 +1,4 @@
+from utils import get_user_agent_str, get_working_proxy, USER_AGENTS, SERVICE_URLS
 from googletrans import Translator, LANGUAGES
 from time import sleep
 import langdetect
@@ -14,10 +15,17 @@ class TranslateList():
     def __init__(self, src_list, desired_lang_list):
         self.src_list = src_list
         self.desired_lang_list = desired_lang_list
-        self.translator = Translator()
         self.expected_langs = ['en', 'et', 'lv', 'lt']
         self.detection_confidence = 0.9
         self.sleep_time = 100
+        self.init_translator()
+    
+    def init_translator(self):
+        '''get user agent, proxies & initialize Translator instance'''
+        user_agent = get_user_agent_str(USER_AGENTS)
+        proxies = get_working_proxy()
+        logger.debug(f'While initializing Translate() class going with proxies: {proxies}')
+        self.translator = Translator(service_urls=SERVICE_URLS, user_agent=user_agent, proxies=proxies, timeout=30)
 
     def desired_langs_supported(self):
         '''check if desired languages are supported by googletrans package'''
