@@ -736,3 +736,904 @@ INFO:newsletter: 35 headlines from https://www.db.lv/ have been successfully tra
 INFO:newsletter: ------Translation finished. Exporting data, saving to database, sending emails... :main
 
 INFO:newsletter: ------------------------------------FINISHED------------------------------------ :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): free-proxy-list.net:443 :_new_conn
+
+DEBUG:connectionpool: https://free-proxy-list.net:443 "GET /anonymous-proxy.html HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 30 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): free-proxy-list.net:443 :_new_conn
+
+DEBUG:connectionpool: https://free-proxy-list.net:443 "GET /anonymous-proxy.html HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): free-proxy-list.net:443 :_new_conn
+
+DEBUG:connectionpool: https://free-proxy-list.net:443 "GET /anonymous-proxy.html HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 31 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): free-proxy-list.net:443 :_new_conn
+
+DEBUG:connectionpool: https://free-proxy-list.net:443 "GET /anonymous-proxy.html HTTP/1.1" 200 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 31 :_make_request
+
+INFO:newsletter: ------------------------------------FRESH START ON 2020.02.12 21.22------------------------------------ :main
+
+INFO:newsletter: ------------------------------------FRESH START ON 2020.02.12 22.48------------------------------------ :main
+
+INFO:newsletter: ------------------------------------FRESH START ON 2020.02.12 22.55------------------------------------ :main
+
+INFO:scrapper: Reading config file config.ini contents from section: VZSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: rinkos :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /rinkos HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.369953 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: pramone :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /pramone HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.322547 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: finansai-apskaita :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /finansai-apskaita HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.315252 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: verslo-aplinka :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /verslo-aplinka HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.276393 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: technologijos-mokslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /technologijos-mokslas HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.250277 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: LRTSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: naujienos/verslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.lrt.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.lrt.lt:443 "GET /naujienos/verslas HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.443574 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: ERRSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: k/majandus :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.err.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://www.err.ee:443 "GET /k/majandus HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.313763 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: POSTIMEESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: search :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): majandus24.postimees.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://majandus24.postimees.ee:443 "GET /search HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.476245 :get_website_headlines_as_list
+
+ERROR:postimees_scrapper: Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES :get_category_articles
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: BALTICTIMESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: news_business :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.baltictimes.com:443 :_new_conn
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business HTTP/1.1" 301 0 :_make_request
+
+DEBUG:connectionpool: Starting new HTTP connection (1): www.baltictimes.com:80 :_new_conn
+
+DEBUG:connectionpool: http://www.baltictimes.com:80 "GET /news_business/ HTTP/1.1" 301 250 :_make_request
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business/ HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.222563 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: Reading config file config.ini contents from section: DBSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: sadalas/ekonomika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/ekonomika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.249314 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/finanses :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/finanses HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.261585 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/energetika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/energetika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.218277 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/start-up :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/start-up HTTP/1.1" 302 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): m.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://m.db.lv:443 "GET /sadalas/start-up HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.302203 :get_website_headlines_as_list
+
+ERROR:db_scrapper: Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES :get_category_articles
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/investors :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/investors HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.158806 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/razosana :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/razosana HTTP/1.1" 302 None :_make_request
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): m.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://m.db.lv:443 "GET /sadalas/razosana HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.383274 :get_website_headlines_as_list
+
+ERROR:db_scrapper: Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES :get_category_articles
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:newsletter: ------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING :main
+
+DEBUG:newsletter: Exporting raw data (93 headlines) from https://www.vz.lt/ to Output/Headlines_data(0).csv :main
+
+INFO:newsletter: Scrapped 93 headlines from https://www.vz.lt/. New headlines found: 80 :main
+
+DEBUG:newsletter: 80 new headlines from ---https://www.vz.lt/--- being passed to TranslateList :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 78.60.213.162 :get_ip
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): free-proxy-list.net:443 :_new_conn
+
+DEBUG:connectionpool: https://free-proxy-list.net:443 "GET /anonymous-proxy.html HTTP/1.1" 200 None :_make_request
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 1 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 29. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 2 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 28. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 3 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 27. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 4 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 26. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 5 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 25. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 6 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 33 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 84.214.150.146 :get_ip
+
+INFO:utils: Found working https proxy: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'}! :get_working_proxy
+
+DEBUG:translate: While initializing Translate() class going with proxies: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} :init_translator
+
+INFO:translate: Calculated total number characters in passed headlines list is 4839
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 50, detect_obj: sl:0.7142836176409189, content: „Danske Bank“ rezultatai: pelnas virðijo prognozes. Deleting member :get_headlines_list_lang
+
+INFO:translate: Returning without translation. Detected lang 'lt' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 79 headlines from https://www.vz.lt/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (25 headlines) from https://www.lrt.lt/ to Output/Headlines_data(1).csv :main
+
+INFO:newsletter: Scrapped 25 headlines from https://www.lrt.lt/. New headlines found: 25 :main
+
+DEBUG:newsletter: 25 new headlines from ---https://www.lrt.lt/--- being passed to TranslateList :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 78.60.213.162 :get_ip
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 1 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 29. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 2 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 28. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 3 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 27. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 4 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 26. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 5 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 25. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 6 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 33 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 84.214.150.146 :get_ip
+
+INFO:utils: Found working https proxy: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'}! :get_working_proxy
+
+DEBUG:translate: While initializing Translate() class going with proxies: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} :init_translator
+
+INFO:translate: Calculated total number characters in passed headlines list is 2060
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+INFO:translate: Returning without translation. Detected lang 'lt' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 25 headlines from https://www.lrt.lt/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (50 headlines) from https://www.err.ee/ to Output/Headlines_data(2).csv :main
+
+INFO:newsletter: Scrapped 50 headlines from https://www.err.ee/. New headlines found: 46 :main
+
+DEBUG:newsletter: 46 new headlines from ---https://www.err.ee/--- being passed to TranslateList :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 78.60.213.162 :get_ip
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 1 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 29. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 2 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 28. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 3 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 27. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 4 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 26. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 5 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 25. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 6 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 24. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 7 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 23. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 8 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 22. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 9 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 21. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 10 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 20. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 11 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 33 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 84.214.150.146 :get_ip
+
+INFO:utils: Found working https proxy: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'}! :get_working_proxy
+
+DEBUG:translate: While initializing Translate() class going with proxies: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} :init_translator
+
+INFO:translate: Calculated total number characters in passed headlines list is 2958
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 35, detect_obj: et:0.8571414486648221, content: Nafta maailmaturu hinnad langesid. Deleting member :get_headlines_list_lang
+
+INFO:translate: Detected language in passed list: et, translating... :get_translated
+
+DEBUG:translate: ---Before requesting google API--- :get_translation_obj
+
+ERROR:translate: Failed to create lang translation objects :get_translation_obj
+Traceback (most recent call last):
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\utils.py", line 941, in check_header_validity
+    if not pat.match(value):
+TypeError: expected string or bytes-like object
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Coding\Investor-Newsletter\translate.py", line 72, in get_translation_obj
+    self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 167, in translate
+    translated = self.translate(item, dest=dest, src=src)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 172, in translate
+    data = self._translate(text, dest, src)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 75, in _translate
+    token = self.token_acquirer.do(text)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\gtoken.py", line 200, in do
+    self._update()
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\gtoken.py", line 57, in _update
+    r = self.session.get(self.host)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\models.py", line 314, in prepare
+    self.prepare_headers(headers)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\models.py", line 448, in prepare_headers
+    check_header_validity(header)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\utils.py", line 945, in check_header_validity
+    "bytes, not %s" % (name, value, type(value)))
+requests.exceptions.InvalidHeader: Value for header {User-Agent: {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.10) Gecko/20050716 Firefox/1.0.6'}} must be of type str or bytes, not <class 'dict'>
+
+WARNING:newsletter: Failed to translate headlines from https://www.err.ee/ containing stripped 45 new headlines. Moving on... :main
+
+DEBUG:newsletter: Exporting raw data (0 headlines) from https://majandus24.postimees.ee/ to Output/Headlines_data(3).csv :main
+
+INFO:newsletter: Scrapped 0 headlines from https://majandus24.postimees.ee/. New headlines found: 0 :main
+
+DEBUG:newsletter: 0 new headlines from ---https://majandus24.postimees.ee/--- being passed to TranslateList :main
+
+WARNING:newsletter: All scrapped headlines are already in csv database. Consider running script later :main
+
+DEBUG:newsletter: Exporting raw data (15 headlines) from https://www.baltictimes.com/ to Output/Headlines_data(4).csv :main
+
+INFO:newsletter: Scrapped 15 headlines from https://www.baltictimes.com/. New headlines found: 8 :main
+
+DEBUG:newsletter: 8 new headlines from ---https://www.baltictimes.com/--- being passed to TranslateList :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 78.60.213.162 :get_ip
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 1 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 29. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 2 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 28. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 3 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 27. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 4 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 26. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 5 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 25. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 6 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 24. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 7 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 23. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 8 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 22. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 9 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 21. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 10 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 20. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 11 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 19. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 12 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 18. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 13 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 17. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 14 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 16. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 15 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 15. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 16 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 14. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 17 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 33 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 84.214.150.146 :get_ip
+
+INFO:utils: Found working https proxy: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'}! :get_working_proxy
+
+DEBUG:translate: While initializing Translate() class going with proxies: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} :init_translator
+
+INFO:translate: Calculated total number characters in passed headlines list is 630
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 2, detect_obj: fr:0.9999938282275309, content: Ventspils yacht port: sustainable development. Deleting member :get_headlines_list_lang
+
+INFO:translate: Returning without translation. Detected lang 'en' already in ['en', 'lt'] :get_translated
+
+INFO:newsletter: 7 headlines from https://www.baltictimes.com/ have been successfully translated and added to headlines_to_email list :main
+
+DEBUG:newsletter: Exporting raw data (67 headlines) from https://www.db.lv/ to Output/Headlines_data(5).csv :main
+
+INFO:newsletter: Scrapped 67 headlines from https://www.db.lv/. New headlines found: 37 :main
+
+DEBUG:newsletter: 37 new headlines from ---https://www.db.lv/--- being passed to TranslateList :main
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 32 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 78.60.213.162 :get_ip
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 1 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 29. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 2 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 28. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 3 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 27. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 4 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 26. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 5 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+ERROR:utils: Failed to pick working proxy. No of attempts remaining: 25. Getting a new set of proxies :get_working_proxy
+
+DEBUG:utils: New https proxy: Proxy(host='84.214.150.146', port='8080', code='no', country='norway', anonymous=True, type='https', source='anonymous-proxy'); New http proxy: Proxy(host='173.44.34.106', port='34276', code='us', country='united states', anonymous=True, type='http', source='anonymous-proxy') :get_proxy_dict_identities
+
+INFO:utils: Testing {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} picked proxies. Attempt: 6 :get_working_proxy
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.httpbin.org:443 :_new_conn
+
+DEBUG:connectionpool: https://www.httpbin.org:443 "GET /ip HTTP/1.1" 200 33 :_make_request
+
+INFO:utils: https://www.httpbin.org/ip returning IP: 84.214.150.146 :get_ip
+
+INFO:utils: Found working https proxy: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'}! :get_working_proxy
+
+DEBUG:translate: While initializing Translate() class going with proxies: {'https': '84.214.150.146:8080', 'http': '173.44.34.106:34276'} :init_translator
+
+INFO:translate: Calculated total number characters in passed headlines list is 2038
+ :get_total_chars
+
+INFO:translate: Detecting headlines list language consistency and original language :get_translated
+
+WARNING:translate: Unexpected language or confidence level too low in member found at index 15, detect_obj: lv:0.8571393012089564, content: Depo DIY overdraftu palielina lîdz 60 miljoniem eiro. Deleting member :get_headlines_list_lang
+
+INFO:translate: Detected language in passed list: lv, translating... :get_translated
+
+DEBUG:translate: ---Before requesting google API--- :get_translation_obj
+
+ERROR:translate: Failed to create lang translation objects :get_translation_obj
+Traceback (most recent call last):
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\utils.py", line 941, in check_header_validity
+    if not pat.match(value):
+TypeError: expected string or bytes-like object
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Coding\Investor-Newsletter\translate.py", line 72, in get_translation_obj
+    self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 167, in translate
+    translated = self.translate(item, dest=dest, src=src)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 172, in translate
+    data = self._translate(text, dest, src)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\client.py", line 75, in _translate
+    token = self.token_acquirer.do(text)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\gtoken.py", line 200, in do
+    self._update()
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\googletrans\gtoken.py", line 57, in _update
+    r = self.session.get(self.host)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 546, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\models.py", line 314, in prepare
+    self.prepare_headers(headers)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\models.py", line 448, in prepare_headers
+    check_header_validity(header)
+  File "C:\Users\yo\AppData\Local\Programs\Python\Python37-32\lib\site-packages\requests\utils.py", line 945, in check_header_validity
+    "bytes, not %s" % (name, value, type(value)))
+requests.exceptions.InvalidHeader: Value for header {User-Agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'}} must be of type str or bytes, not <class 'dict'>
+
+WARNING:newsletter: Failed to translate headlines from https://www.db.lv/ containing stripped 36 new headlines. Moving on... :main
+
+INFO:newsletter: ------Translation finished. Exporting data, saving to database, sending emails... :main
+
+INFO:newsletter: ------------------------------------FINISHED------------------------------------ :main
