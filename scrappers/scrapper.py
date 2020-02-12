@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 import os
 import requests
 import lxml
-import csv
+# from utils.utils import get_user_agent_dict
 import logging
 
 # Initializing logging in module
@@ -19,7 +19,6 @@ class Scrapper():
     '''Generic Scrapper class indented to inherit from for each specific website. Instance arguments:
     - base website
     - path to config file where class takes website categories suffix to url
-    - relative output csv file path
     
     Functions that most likely need overwrite:
     - scrape_category
@@ -27,8 +26,7 @@ class Scrapper():
     - get_category_feature_article
     - get_category_articles
     
-    Once ready --> get_website_headlines_as_list()
-    Output export --> export_list_to_csv(args*)
+    Output scrape results as list with --> .get_website_headlines_as_list()
     '''
 
     def __init__(self, base_url, config_file):
@@ -126,3 +124,4 @@ class Scrapper():
 
 if  __name__ == '__main__':
     pass
+    # print(get_user_agent_dict())
