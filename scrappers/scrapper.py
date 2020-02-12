@@ -6,8 +6,9 @@ from urllib.parse import urljoin
 import os
 import requests
 import lxml
-# from utils.utils import get_user_agent_dict
 import logging
+from utils import get_user_agent_dict, get_working_proxy
+from utils import USER_AGENTS
 
 # Initializing logging in module
 logger = logging.getLogger(__name__)
@@ -55,7 +56,8 @@ class Scrapper():
 
     def get_response(self, url):
         '''checks passsed url and returns response if available'''
-        r = requests.get(url, timeout=10, headers=HEADERS)
+        user_agent = get_user_agent_dict(USER_AGENTS)
+        r = requests.get(url, timeout=10, headers=user_agent)
         if r.status_code == 200:
             return r
         else:
@@ -124,4 +126,3 @@ class Scrapper():
 
 if  __name__ == '__main__':
     pass
-    # print(get_user_agent_dict())
