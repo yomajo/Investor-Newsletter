@@ -5,7 +5,7 @@ from datetime import datetime
 import logging
 import logging.handlers
 from utils import export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
-from utils.utils import get_user_agent_dict
+from utils import get_user_agent_dict, get_working_proxy, USER_AGENTS
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -100,5 +100,4 @@ def main():
     logger.info(f'------------------------------------FINISHED------------------------------------')
 
 if __name__ == '__main__':
-    # main()
-    print(get_user_agent_dict())
+    main()
