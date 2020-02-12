@@ -8,11 +8,6 @@ SERVICE_URLS = [
     'https://translate.google.co.uk'
     ]
 
-
-# URL to test originating request IP address
-TEST_IP_URL = 'https://www.httpbin.org/ip'
-
-
 # User Agents List
 USER_AGENTS = [
     'Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20100101 Firefox/7.0.1',
