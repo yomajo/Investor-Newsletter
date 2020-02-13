@@ -41,7 +41,7 @@ def write_or_append_output(output_file):
 def export_list_to_csv(output_data, output_file, csv_delimiter = '\t'):
     '''write list contents to csv file. Default delimiter: tab'''
     w_a_option = write_or_append_output(output_file)
-    with open(output_file, w_a_option, newline='', encoding='utf-8') as f:
+    with open(output_file, w_a_option, newline='') as f:
         csv_writer = csv.writer(f, delimiter=csv_delimiter)
         for headline_info in output_data:
             csv_writer.writerow(headline_info)
@@ -65,8 +65,8 @@ def get_encoding(csvfile_path):
 def get_headline_urls_in_db(csvfile_path):
     '''returns list of urls in 'csv database' of already sent headlines. If no file - return empty list'''
     if os.path.exists(csvfile_path):
-        encoding = get_encoding(csvfile_path)
-        with open(csvfile_path, 'r', encoding=encoding) as csvfile:
+        # encoding = get_encoding(csvfile_path)
+        with open(csvfile_path, 'r') as csvfile:
             csv_data = csv.reader(csvfile, delimiter='\t')
             urls_in_db = []
             for headline_data in csv_data:
@@ -88,7 +88,7 @@ def get_headlines_not_in_db(headlines_data_list, db_urls):
 
 def csv_contents_to_list(csvfile_path):
     '''reads csv data with default tab delimiter and returns a list'''
-    with open(csvfile_path, 'r', encoding='utf-8') as csvfile:
+    with open(csvfile_path, 'r') as csvfile:
         csv_data = csv.reader(csvfile, delimiter='\t')
         csv_headline_data = [headline_data for headline_data in csv_data]
     return csv_headline_data
