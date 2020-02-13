@@ -31,6 +31,7 @@ class Scrapper():
         self.base_url = base_url
         self.config_file = config_file
         self.user_agent = get_user_agent_dict(USER_AGENTS)
+        self.encoding = self.get_website_encoding()
 
     def get_categs_list(self):
         '''return list of categories (string as part of url)'''
@@ -43,6 +44,12 @@ class Scrapper():
         for _, cat in raw_cls_config:
             categs.append(cat)
         return categs
+
+    def get_website_encoding(self):
+        '''every website uses charset utf-8 except for vz.lt; returning encoding based on cls name'''
+        if 'VZ' in self.__class__.__name__.upper():
+            return 'Windows-1257'
+        return 'utf-8'
     
     def get_urls(self):
         '''returns ready urls'''
@@ -74,7 +81,7 @@ class Scrapper():
     def get_content_container(self, response, html_element, css_class):
         '''---OVERWRITE WHEN INHERITING---'''
         '''returns main articles holding container of html soup object'''
-        self.soup = BeautifulSoup(response.content, 'lxml')
+        self.soup = BeautifulSoup(response.content, 'lxml', from_encoding=self.encoding)
         self.content_container = self.soup.find(html_element, class_=css_class)
         return self.content_container
     
