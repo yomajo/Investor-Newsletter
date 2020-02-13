@@ -18,7 +18,7 @@ file_handler.setFormatter(formatter)
 # Additional Console logging
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-stream_handler.setLevel(logging.WARNING)
+stream_handler.setLevel(logging.DEBUG)
 
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
@@ -49,7 +49,7 @@ def scrape_websites_headlines_to_list(base_urls, scrappers_list):
             headlines_data = scrapper_inst.get_website_headlines_as_list()
             raw_scrappers_output.append(headlines_data)
         except:
-            logger.error(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass}, proceeding to next website...')
+            logger.exception(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass.__name__}, proceeding to next website...')
             continue
     return raw_scrappers_output
 
@@ -98,6 +98,7 @@ def main():
     export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
     
     logger.info(f'------------------------------------FINISHED------------------------------------')
+
 
 if __name__ == '__main__':
     main()
