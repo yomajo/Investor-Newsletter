@@ -7,12 +7,14 @@ import chardet
 import json
 import csv
 import os
+from time import sleep
 
 
 # Objects & Variables Initialization
 logger = logging.getLogger(__name__)
 COLLECTOR = proxyscrape.create_collector(name='root_collector', resource_types=['http', 'https'], resources='anonymous-proxy')
 TEST_IP_URL = 'https://www.httpbin.org/ip'
+coll = proxyscrape.create_collector
 
 
 ######### FUNCTION FOR PICKING RANDOM USER AGENT FOR REQUESTS #########
@@ -61,12 +63,21 @@ def get_encoding(csvfile_path):
         return get_encoding_via_lib(csvfile_path)
 
 def get_headline_urls_in_db(csvfile_path):
-    '''returns list of urls in 'csv database' of already sent headlines'''
-    encoding = get_encoding(csvfile_path)
-    with open(csvfile_path, 'r', encoding=encoding) as csvfile:
-        csv_data = csv.reader(csvfile, delimiter='\t')
-        urls_in_db = [headline_data[1] for headline_data in csv_data]
-    return urls_in_db
+    '''returns list of urls in 'csv database' of already sent headlines. If no file - return empty list'''
+    if os.path.exists(csvfile_path):
+        encoding = get_encoding(csvfile_path)
+        with open(csvfile_path, 'r', encoding=encoding) as csvfile:
+            csv_data = csv.reader(csvfile, delimiter='\t')
+            urls_in_db = []
+            for headline_data in csv_data:
+                try:
+                    urls_in_db.append(headline_data[1])
+                except:
+                    logging.exception(f'Could not decode {headline_data}, skipping line...')
+                    continue
+            # urls_in_db = [headline_data[1] for headline_data in csv_data]
+        return urls_in_db
+    return []
 
 def get_headlines_not_in_db(headlines_data_list, db_urls):
     '''returns a list of headlines data, that are NOT yet in db_urls list. Args:
@@ -88,20 +99,34 @@ def csv_contents_to_list(csvfile_path):
 def get_proxy_dict_identities():
     '''uses initialized collector object from proxyscrape to return proxies dict'''
     # http_type = https_or_http(target_url)
-    raw_proxy_https_data = COLLECTOR.get_proxy({'type':'https', 'code':('us', 'uk', 'de', 'fr', 'ca', 'se', 'no'),'anonymous':True})
-    raw_proxy_http_data = COLLECTOR.get_proxy({'type':'http', 'code':('us', 'uk', 'de', 'fr', 'ca', 'se', 'no'),'anonymous':True})
+    # raw_proxy_https_data = None
+    # raw_proxy_http_data = None
+    # 'anonymous':True
+    # while raw_proxy_https_data == None:
+    sleep(5)
+    raw_proxy_https_data = COLLECTOR.get_proxy({'type':'https', 'code':('us', 'uk', 'de', 'fr', 'ca', 'se', 'no')})
+    raw_proxy_http_data = COLLECTOR.get_proxy({'type':'http', 'code':('us', 'uk', 'de', 'fr', 'ca', 'se', 'no')})
+        # print((f'--------------------New https proxy: \n{raw_proxy_https_data}; New http proxy: \n{raw_proxy_http_data}-----'))
+        # if raw_proxy_https_data == None:
+        #     break
     # Constructing sockets:    
     logger.debug(f'New https proxy: {raw_proxy_https_data}; New http proxy: {raw_proxy_http_data}')
-    http_proxy_socket = f'{raw_proxy_http_data[0]}:{raw_proxy_http_data[1]}' 
-    https_proxy_socket = f'{raw_proxy_https_data[0]}:{raw_proxy_https_data[1]}' 
-    proxies_dict = {'https':https_proxy_socket, 'http':http_proxy_socket}
-    return proxies_dict
+    try:
+        http_proxy_socket = f'{raw_proxy_http_data[0]}:{raw_proxy_http_data[1]}' 
+        https_proxy_socket = f'{raw_proxy_https_data[0]}:{raw_proxy_https_data[1]}' 
+        proxies_dict = {'https':https_proxy_socket, 'http':http_proxy_socket}
+        logging.exception('What?')
+        return proxies_dict
+    except:
+        logging.error(f'Error while picking proxies. https proxy: {raw_proxy_https_data}, http: {raw_proxy_http_data}. Trying recursion...')
+        get_proxy_dict_identities()
 
 def get_ip(proxy=None):
     '''returns original (no proxy) ip by default; returns proxy ip if proxy was passed'''
     r = requests.get(TEST_IP_URL, proxies=proxy, timeout=5)
     data = json.loads(r.text)
     client_ip = data['origin']
+    print((f'{TEST_IP_URL} returning IP: {client_ip}'))
     logger.info(f'{TEST_IP_URL} returning IP: {client_ip}')
     return client_ip
 
@@ -113,6 +138,7 @@ def get_working_proxy(max_attempts=30):
     while True:
         try: 
             attempt += 1
+            print((f'Testing {proxies} picked proxies. Attempt: {attempt}') )
             logger.info(f'Testing {proxies} picked proxies. Attempt: {attempt}') 
             if attempt == max_attempts:
                 logger.error(f'Maximum number of {max_attempts} attempts has been reached. Goes we will go without a proxy this time...')
@@ -123,8 +149,24 @@ def get_working_proxy(max_attempts=30):
                 return proxies
         except:
             logger.error(f'Failed to pick working proxy. No of attempts remaining: {max_attempts-attempt}. Getting a new set of proxies')
+            blacklist_proxies(proxies)
+            COLLECTOR.refresh_proxies(force=True)
             proxies = get_proxy_dict_identities()
             continue
+
+def blacklist_proxies(proxies_dict):
+    '''extracts and blacklists proxy, that has failed, not to be used again'''
+    https_socket = proxies_dict.get('https', '1.1.1.1:80')
+    http_socket = proxies_dict.get('http', '1.1.1.1:80')
+    https_host, https_port = extract_host_port(https_socket)
+    http_host, http_port = extract_host_port(http_socket)
+    COLLECTOR.blacklist_proxy(host=https_host, port=https_port)
+    COLLECTOR.blacklist_proxy(host=http_host, port=http_port)
+
+def extract_host_port(proxy_socket):
+    '''returns proxy_host and port from passed ip:port string'''
+    proxy_host, proxy_port = proxy_socket.split(':')
+    return proxy_host, proxy_port
 
 
 if __name__ == '__main__':
