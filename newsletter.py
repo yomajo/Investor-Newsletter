@@ -56,37 +56,22 @@ def scrape_websites_headlines_to_list(base_urls, scrappers_list):
 def main():
     logger.info(f'------------------------------------FRESH START ON {FORMATTED_TIMESTAMP}------------------------------------')
     base_urls = get_config_section_values(CONFIG_FILE, 'BASE_URLS')
-    desired_langs = get_config_section_values(CONFIG_FILE, 'LANGUAGES')
+    # desired_langs = get_config_section_values(CONFIG_FILE, 'LANGUAGES')
     urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
 
     # Scrape and output results into raw_scrappers_output list for each website
     raw_scrappers_output = scrape_websites_headlines_to_list(base_urls, SCRAPPERS)
 
-    logger.info('------COMPLETED SCRAPPING DATA TO LISTS, TRANSLATING')
+    logger.info('------COMPLETED SCRAPPING DATA TO LISTS, SKIPPING TRANSLATION FOR NOW')
 
     headlines_to_email = []
     for idx, scrapped_list in enumerate(raw_scrappers_output):
         # Export separate, untranslated, raw scrape output from each website as separate csv (temporary)        
         logger.debug(f'Exporting raw data ({len(scrapped_list)} headlines) from {base_urls[idx]} to Output/Headlines_data({idx}).csv')
         export_list_to_csv(scrapped_list, 'Output/Headlines_data(' + str(idx) +').csv')
-        # Compare to "csv db" entries and reduce load working with new headlines only before passing for language processing
-        scrapped_new_headlines = get_headlines_not_in_db(scrapped_list, urls_in_db)
-        logger.info(f'Scrapped {len(scrapped_list)} headlines from {base_urls[idx]}. New headlines found: {len(scrapped_new_headlines)}')
-        logger.debug(f'{len(scrapped_new_headlines)} new headlines from ---{base_urls[idx]}--- being passed to TranslateList')
-        if scrapped_new_headlines:    
-            translator = TranslateList(scrapped_new_headlines, desired_langs)
-            try:
-                translated_headlines_data = translator.get_translated()
-                logger.info(f'{len(translated_headlines_data)} headlines from {base_urls[idx]} have been successfully translated and added to headlines_to_email list')
-                headlines_to_email = headlines_to_email + translated_headlines_data
-            except:
-                # Change to exception, upon new run
-                logger.warning(f'Failed to translate headlines from {base_urls[idx]} containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
-                continue
-        else:
-            logger.warning('All scrapped headlines are already in csv database. Consider running script later')
 
-    logger.info('------Translation finished. Exporting data, saving to database, sending emails...')
+        scrapped_new_headlines = get_headlines_not_in_db(scrapped_list, urls_in_db)
+        headlines_to_email = headlines_to_email + scrapped_new_headlines
     
     # Send email with new headlines in 'headlines_to_email' list:
     # To be added...
