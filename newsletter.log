@@ -1,0 +1,228 @@
+
+INFO:newsletter: ------------------------------------FRESH START ON 2020.02.13 17.06------------------------------------ :main
+
+DEBUG:scrapper: USING ENCONDING: Windows-1257 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: VZSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: rinkos :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /rinkos HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.340924 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: pramone :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /pramone HTTP/1.1" 200 33995 :_make_request
+
+INFO:scrapper: Server response time: 0.289947 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: finansai-apskaita :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /finansai-apskaita HTTP/1.1" 200 42603 :_make_request
+
+INFO:scrapper: Server response time: 0.212546 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: verslo-aplinka :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /verslo-aplinka HTTP/1.1" 200 33925 :_make_request
+
+INFO:scrapper: Server response time: 0.283211 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: technologijos-mokslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.vz.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.vz.lt:443 "GET /technologijos-mokslas HTTP/1.1" 200 30333 :_make_request
+
+INFO:scrapper: Server response time: 0.271203 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+DEBUG:scrapper: USING ENCONDING: utf-8 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: LRTSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: naujienos/verslas :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.lrt.lt:443 :_new_conn
+
+DEBUG:connectionpool: https://www.lrt.lt:443 "GET /naujienos/verslas HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.404618 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+DEBUG:scrapper: USING ENCONDING: utf-8 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: ERRSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: k/majandus :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.err.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://www.err.ee:443 "GET /k/majandus HTTP/1.1" 200 33599 :_make_request
+
+INFO:scrapper: Server response time: 0.216922 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+DEBUG:scrapper: USING ENCONDING: utf-8 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: POSTIMEESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: search :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): majandus24.postimees.ee:443 :_new_conn
+
+DEBUG:connectionpool: https://majandus24.postimees.ee:443 "GET /search HTTP/1.1" 200 14223 :_make_request
+
+INFO:scrapper: Server response time: 0.544225 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+DEBUG:scrapper: USING ENCONDING: utf-8 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: BALTICTIMESSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: news_business :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.baltictimes.com:443 :_new_conn
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business HTTP/1.1" 301 0 :_make_request
+
+DEBUG:connectionpool: Starting new HTTP connection (1): www.baltictimes.com:80 :_new_conn
+
+DEBUG:connectionpool: http://www.baltictimes.com:80 "GET /news_business/ HTTP/1.1" 301 250 :_make_request
+
+DEBUG:connectionpool: https://www.baltictimes.com:443 "GET /news_business/ HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.225233 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+DEBUG:scrapper: USING ENCONDING: utf-8 :__init__
+
+INFO:scrapper: Reading config file config.ini contents from section: DBSCRAPPER :get_categs_list
+
+INFO:scrapper: New request for category: sadalas/ekonomika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/ekonomika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.275451 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/finanses :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/finanses HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.112685 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/energetika :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/energetika HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.119338 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/start-up :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/start-up HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.151177 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/investors :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/investors HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.140891 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:scrapper: New request for category: sadalas/razosana :get_website_headlines_as_list
+
+DEBUG:connectionpool: Starting new HTTPS connection (1): www.db.lv:443 :_new_conn
+
+DEBUG:connectionpool: https://www.db.lv:443 "GET /sadalas/razosana HTTP/1.1" 200 None :_make_request
+
+INFO:scrapper: Server response time: 0.131657 :get_website_headlines_as_list
+
+INFO:scrapper: Writing category headlines infomation to common variable :category_to_output_list
+
+INFO:scrapper: sleeping before jumping to next category... ZZzz... :get_website_headlines_as_list
+
+INFO:newsletter: ------COMPLETED SCRAPPING DATA TO LISTS, SKIPPING TRANSLATION FOR NOW :main
+
+DEBUG:newsletter: Exporting raw data (94 headlines) from https://www.vz.lt/ to Output/Headlines_data(0).csv :main
+
+DEBUG:newsletter: Exporting raw data (25 headlines) from https://www.lrt.lt/ to Output/Headlines_data(1).csv :main
+
+DEBUG:newsletter: Exporting raw data (50 headlines) from https://www.err.ee/ to Output/Headlines_data(2).csv :main
+
+DEBUG:newsletter: Exporting raw data (40 headlines) from https://majandus24.postimees.ee/ to Output/Headlines_data(3).csv :main
+
+DEBUG:newsletter: Exporting raw data (15 headlines) from https://www.baltictimes.com/ to Output/Headlines_data(4).csv :main
+
+DEBUG:newsletter: Exporting raw data (106 headlines) from https://www.db.lv/ to Output/Headlines_data(5).csv :main
+
+INFO:newsletter: ------------------------------------FINISHED------------------------------------ :main
