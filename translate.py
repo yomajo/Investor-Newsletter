@@ -18,7 +18,6 @@ class TranslateList():
         self.expected_langs = ['en', 'et', 'lv', 'lt']
         self.detection_confidence = 0.9
         self.sleep_time = 100
-        self.init_translator()
     
     def init_translator(self):
         '''get user agent, proxies & initialize Translator instance'''
@@ -66,7 +65,8 @@ class TranslateList():
         self.src_list.pop(idx)
 
     def get_translation_obj(self, list_to_translate, src_lang, trg_lang):
-        '''gets iterable translation object querying google translate'''
+        '''initializes Translator cls; gets iterable translation object querying google translate'''
+        self.init_translator()
         try:
             logger.debug('---Before requesting google API---')
             self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
