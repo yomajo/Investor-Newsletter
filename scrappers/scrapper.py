@@ -13,9 +13,6 @@ from utils import USER_AGENTS
 # Initializing logging in module
 logger = logging.getLogger(__name__)
 
-# User Agent for Requests
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'}
-
 class Scrapper():
     '''Generic Scrapper class indented to inherit from for each specific website. Instance arguments:
     - base website
@@ -33,6 +30,7 @@ class Scrapper():
     def __init__(self, base_url, config_file):
         self.base_url = base_url
         self.config_file = config_file
+        self.user_agent = get_user_agent_dict(USER_AGENTS)
 
     def get_categs_list(self):
         '''return list of categories (string as part of url)'''
@@ -56,8 +54,7 @@ class Scrapper():
 
     def get_response(self, url):
         '''checks passsed url and returns response if available'''
-        user_agent = get_user_agent_dict(USER_AGENTS)
-        r = requests.get(url, timeout=10, headers=user_agent)
+        r = requests.get(url, headers=self.user_agent, timeout=10)
         if r.status_code == 200:
             return r
         else:
