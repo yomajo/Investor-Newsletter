@@ -5,7 +5,6 @@ from datetime import datetime
 import logging
 import logging.handlers
 from utils import export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
-from utils import get_user_agent_dict, get_working_proxy, USER_AGENTS
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -18,7 +17,7 @@ file_handler.setFormatter(formatter)
 # Additional Console logging
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-stream_handler.setLevel(logging.WARNING)
+stream_handler.setLevel(logging.DEBUG)
 
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
@@ -49,7 +48,7 @@ def scrape_websites_headlines_to_list(base_urls, scrappers_list):
             headlines_data = scrapper_inst.get_website_headlines_as_list()
             raw_scrappers_output.append(headlines_data)
         except:
-            logger.error(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass}, proceeding to next website...')
+            logger.exception(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass.__name__}, proceeding to next website...')
             continue
     return raw_scrappers_output
 
@@ -80,8 +79,7 @@ def main():
                 logger.info(f'{len(translated_headlines_data)} headlines from {base_urls[idx]} have been successfully translated and added to headlines_to_email list')
                 headlines_to_email = headlines_to_email + translated_headlines_data
             except:
-                # Change to exception, upon new run
-                logger.warning(f'Failed to translate headlines from {base_urls[idx]} containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
+                logger.exception(f'Failed to translate headlines from {base_urls[idx]} containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
                 continue
         else:
             logger.warning('All scrapped headlines are already in csv database. Consider running script later')
@@ -98,6 +96,7 @@ def main():
     export_list_to_csv(headlines_to_email, OUTPUT_HEADLINES_FILE)
     
     logger.info(f'------------------------------------FINISHED------------------------------------')
+
 
 if __name__ == '__main__':
     main()
