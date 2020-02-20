@@ -11,7 +11,7 @@ import os
 # Objects & Variables Initialization
 logger = logging.getLogger(__name__)
 TEST_IP_URL = 'https://www.httpbin.org/ip'
-PROXY_SOURCE_URL = 'https://free-proxy-list.net/anonymous-proxy.html'
+PROXY_SOURCE_URL = 'https://free-proxy-list.net'
 TEST_IP_URL = 'https://www.httpbin.org/ip'
 
 
@@ -176,5 +176,3 @@ def get_working_proxy():
 
 if __name__ == '__main__':
     pass
-    # proxies = get_working_proxy()
-    # print(proxies)
