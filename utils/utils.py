@@ -119,7 +119,7 @@ def get_sockets_lists():
         logger.exception(f'Proxy source website {PROXY_SOURCE_URL} structure changed. Problems scrapping table rows')
         return None, None
 
-def get_ip(proxy=None):
+def get_ip(client_socket='1.1.1.1', proxy=None):
     '''returns original (no proxy) ip by default; returns proxy ip if proxy was passed'''
     try:
         r = requests.get(TEST_IP_URL, proxies=proxy, timeout=10)
@@ -130,13 +130,17 @@ def get_ip(proxy=None):
         sleep(3/randint(1,10))
         return client_ip
     except:
-        logger.exception(f'Error occured while trying to retrieve IP address. {TEST_IP_URL} website down/blocked?')
-        return None
+        logger.exception(f'Error occured while trying to retrieve IP address. {TEST_IP_URL} website down/blocked?, returning client_socket: {client_socket}')
+        return client_socket
 
 def get_working_proxy():
     '''(HTTPS ONLY!) gets, tests, returns working proxy. If fails max_attempts times, returns None.'''
     try:
         client_ip = get_ip()
+        # If test website is down, prevent from returning default client ip:
+        if client_ip == '1.1.1.1':
+            logger.error(f'Seems {TEST_IP_URL} website is down. Unable to test any of proxies, returning None')
+            return None
         https_sockets, http_sockets = get_sockets_lists()
         max_attempts = len(max([https_sockets, http_sockets], key=len))
     except:
@@ -152,11 +156,11 @@ def get_working_proxy():
             proxies = {'https': picked_https_socket, 'http': picked_http_socket}
             # print((f'Testing {proxies} picked proxies. Attempt: {attempt}') )
             logger.info(f'Testing {proxies} picked proxies. Attempt: {attempt}') 
-            changed_ip = get_ip(proxies)
+            changed_ip = get_ip(client_ip, proxies)
             if changed_ip == None:
                 return None
             if changed_ip != client_ip:
-                print(f'\nFound working https proxy: {proxies}!\n')
+                # print(f'Found working https proxy: {proxies}!')
                 logger.info(f'Found working https proxy: {proxies}!')
                 return proxies
             if attempt == max_attempts:
