@@ -24,7 +24,7 @@ class TranslateList():
         user_agent = get_user_agent_str(USER_AGENTS)
         proxies = get_working_proxy()
         logger.debug(f'While initializing Translate() class going with proxies: {proxies}')
-        self.translator = Translator(service_urls=SERVICE_URLS, user_agent=user_agent, proxies=proxies, timeout=30)
+        self.translator = Translator(user_agent=user_agent, proxies=proxies, timeout=30)
 
     def desired_langs_supported(self):
         '''check if desired languages are supported by googletrans package'''
@@ -64,30 +64,37 @@ class TranslateList():
         self.headlines.pop(idx)
         self.src_list.pop(idx)
 
-    def get_translation_obj(self, list_to_translate, src_lang, trg_lang):
-        '''initializes Translator cls; gets iterable translation object querying google translate'''
-        self.init_translator()
-        try:
-            logger.debug('---Before requesting google API---')
-            self.translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
-            logger.debug('---After requesting google API---')
-            logger.info(f'Sleeping after querying google API for {self.sleep_time} seconds... ZZzz...')
-            sleep(self.sleep_time)
-        except:
-            logger.exception('Failed to create lang translation objects')
-            raise Exception
+    def get_translation_obj(self, list_to_translate, src_lang, trg_lang, max_attempts=10):
+        '''Attempts max_attempts times to initialize Translator cls with working proxy;
+        returns iterable translation object querying google translate if everything goes fine'''
+        attempt = 0
+        while True:
+            try:
+                attempt += 1
+                # Terminate loop and whole translation class stuff returning None if could not work things out in max_attempts
+                if attempt == max_attempts:
+                    logger.error(f'Maximum number of {max_attempts} attempts has been reached. Could not find working Translator and Proxy pair')
+                    return None
+                self.init_translator()
+                logger.debug('---Before requesting google API---')
+                translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+                logger.debug('---After requesting google API---')
+                return translation_objs
+            except:
+                logger.warning(f'Attempt {attempt} failed in creating Translator object create lang translation objects. Trying again...')
+                continue
 
     def bulk_translate(self, list_to_translate, src_lang, trg_lang):
         '''translate passed list from src_lang to trg_lang'''
         translated_headlines = []
         try:
-            self.get_translation_obj(list_to_translate, src_lang, trg_lang)
-            for idx, translation in enumerate(self.translation_objs):
+            translator_objs = self.get_translation_obj(list_to_translate, src_lang, trg_lang)
+            for idx, translation in enumerate(translator_objs):
                 translated_headlines.append(translation.text)
-                logger.debug(f'Successfully translated {idx}/{len(self.translation_objs)}; output: {translation.text}')
+                logger.debug(f'Progress: {idx+1}/{len(translator_objs)} headlines; translated headline: {translation.text}')
             return translated_headlines
         except:
-            logger.exception(f'Error occured while translating {translation} among {len(self.translation_objs)} members')
+            logger.exception(f'Error occured while iterating translation object at: {translation} among {len(translator_objs)} members')
             raise Exception
 
     def lists_same_length(self, src_list, translated_list):
@@ -110,7 +117,7 @@ class TranslateList():
         chars = 0
         for item in list_to_calc:
             chars = chars + len(item)
-        logger.info(f'Calculated total number characters in passed headlines list is {chars}\n')
+        logger.info(f'Calculated total number characters in passed headlines list is {chars}')
 
     def get_translated(self):
         '''if possible, returns translated list'''        
