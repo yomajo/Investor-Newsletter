@@ -1,4 +1,4 @@
-from utils import get_user_agent_str, get_working_proxy, USER_AGENTS, SERVICE_URLS
+from utils import get_user_agent_str, get_working_proxy, USER_AGENTS
 from googletrans import Translator, LANGUAGES
 from time import sleep
 import langdetect
@@ -50,13 +50,12 @@ class TranslateList():
             if lang not in self.expected_langs or confidence < self.detection_confidence:
                 logger.warning(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {top_detect_res}, content: {headline}. Deleting member')
                 self.delete_member(idx)
-                break
+                continue
             if lang not in detected_langs:
                 detected_langs.append(lang)
-            continue
         if len(detected_langs) != 1:
-            logger.exception(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
-            raise Exception
+            logger.warning(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
+            raise Exception(f'Not processing this list. Language detection results: {detected_langs}')
         return detected_langs[0]
 
     def delete_member(self, idx):
