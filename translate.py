@@ -49,10 +49,10 @@ class TranslateList():
                 logger.warning(f'Unexpected language or confidence level too low in member found at index {idx}, detect_obj: {top_detect_res}, content: {headline}. Deleting member')
                 self.delete_member(idx)
                 continue
-            if lang not in detected_langs:
-                detected_langs.append(lang)
-        logger.info(f'Returning first detected list language: {detected_langs[0]}, all detected languages in list: {detected_langs}')
-        return detected_langs[0]
+            detected_langs.append(lang)
+        dominant_lang = max(detected_langs, key=detected_langs.count)
+        logger.info(f'Returning detected dominant list language: {dominant_lang}, all detected unique languages as set: {set(detected_langs)}')
+        return dominant_lang
 
     def delete_member(self, idx):
         '''removes member at idx from self.src_list passed to cls and stripped self.headings'''
