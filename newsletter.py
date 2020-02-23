@@ -1,10 +1,10 @@
 from scrappers import VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper
-from translate import TranslateList
-from configparser import ConfigParser
-from datetime import datetime
-import logging
-import logging.handlers
 from utils import export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
+from configparser import ConfigParser
+from translate import TranslateList
+from datetime import datetime
+import logging.handlers
+import logging
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -77,7 +77,7 @@ def main():
             try:
                 translated_headlines_data = translator.get_translated()
                 logger.info(f'{len(translated_headlines_data)} headlines from {base_urls[idx]} have been successfully translated and added to headlines_to_email list')
-                headlines_to_email = headlines_to_email + translated_headlines_data
+                headlines_to_email += translated_headlines_data
             except:
                 logger.exception(f'Failed to translate headlines from {base_urls[idx]} containing stripped {len(scrapped_new_headlines)} new headlines. Moving on...')
                 continue

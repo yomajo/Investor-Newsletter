@@ -115,7 +115,7 @@ class TranslateList():
         '''prints out total characters passed to be proccessed to google translate'''
         chars = 0
         for item in list_to_calc:
-            chars = chars + len(item)
+            chars += len(item)
         logger.info(f'Calculated total number characters in passed headlines list is {chars}')
 
     def get_translated(self):
