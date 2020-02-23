@@ -3,9 +3,55 @@ from googletrans import Translator, LANGUAGES
 from time import sleep
 import langdetect
 import logging
+from pprint import pprint
 
 # Initializing logging in module
 logger = logging.getLogger(__name__)
+
+# Harddcoded test_list
+test_headline_data = [['Atšaukta didžiausia pasaulyje telekomunikacijų paroda',
+        'https://www.vz.lt/technologijos-mokslas/2020/02/12/atsaukta-didziausia-pasaulyje-telekomunikaciju-paroda'],
+        ['Mato prielaidų šiemet atpigti vairuotojų privalomajam draudimui',
+        'https://www.vz.lt/finansai-apskaita/bankai-draudimas/2020/02/14/mato-prielaidu-siemet-atpigti-vairuotoju-privalomajam-draudimui'],
+        ['Kaip patikrinti, ką darbuotojai išmoko mokymuose',
+        'https://www.vz.lt/smulkusis-verslas/2020/02/13/kaip-patikrinti-ka-darbuotojai-ismoko-mokymuose'],
+        ['Atšaukta didžiausia pasaulyje telekomunikacijų paroda',
+        'https://www.vz.lt/technologijos-mokslas/2020/02/12/atsaukta-didziausia-pasaulyje-telekomunikaciju-paroda'],
+        ['Iškreipta realybė: Graikijos ir Italijos obligacijos graibstomos kaip '
+        'saugumo užuovėja',
+        'https://www.vz.lt/rinkos/2020/02/18/iskreipta-realybe-graikijos-ir-italijos-obligacijos-graibstomos-kaip-saugumo-uzuoveja'],
+        ['Lumenappus sunnib suusakeskuseid lume hankimiseks äärmuslikke viise otsima',
+        'https://www.err.ee/1036324/lumenappus-sunnib-suusakeskuseid-lume-hankimiseks-aarmuslikke-viise-otsima'],
+        ['Soe talv, suvised hinnad: ületootmine ajas maagaasi hinna rekordmadalale',
+        'https://www.err.ee/1036195/soe-talv-suvised-hinnad-uletootmine-ajas-maagaasi-hinna-rekordmadalale'],
+        ['Triin Kutberg: alkoholiaktsiisi langetamine mõjus majandusele positiivselt',
+        'https://www.err.ee/1054639/triin-kutberg-alkoholiaktsiisi-langetamine-mojus-majandusele-positiivselt'],
+        ['Uus Läti-Eesti elektriliin võib tulla Liivi merepargi kaudu',
+        'https://www.err.ee/1036888/uus-lati-eesti-elektriliin-voib-tulla-liivi-merepargi-kaudu'],
+        ['Eesti koos veel kaheksa riigiga kaalub EL-i maanteepaketi tõttu kohtuteed',
+        'https://www.err.ee/1036795/eesti-koos-veel-kaheksa-riigiga-kaalub-el-i-maanteepaketi-tottu-kohtuteed'],
+        ["Belarus orders two more oil tankers via Lithuania's Klaipeda",
+        'https://www.baltictimes.com/belarus_orders_two_more_oil_tankers_via_lithuania_s_klaipeda/'],
+        ["Belarus orders two more oil tankers via Lithuania's Klaipeda",
+        'https://www.baltictimes.com/belarus_orders_two_more_oil_tankers_via_lithuania_s_klaipeda/'],
+        ['Utena brewery is the first in the country to eliminate CO 2 emissions: '
+        'exclusive status granted',
+        'https://www.baltictimes.com/utena_brewery_is_the_first_in_the_country_to_eliminate_co_2_emissions__exclusive_status_granted/'],
+        ['Lithuania chosen as a launchpad to EU markets – Cinganta',
+        'https://www.baltictimes.com/lithuania_chosen_as_a_launchpad_to_eu_markets___cinganta/'],
+        ['Two Latvian citizens convicted of large-scale fraud in the United States',
+        'https://www.baltictimes.com/two_latvian_citizens_convicted_of_large-scale_fraud_in_the_united_states/'],
+        ['Finanšu tehnoloģiju uzņēmumi nolūko Vjetnamu',
+        'https://www.db.lv/zinas/finansu-tehnologiju-uznemumi-noluko-vjetnamu-494934'],
+        ['Maksājumu jomā transformācija turpināsies',
+        'https://www.db.lv/zinas/maksajumu-joma-transformacija-turpinasies-494760'],
+        ['Elektroenerģijas ražotājs AS Residence Energy par labu Meridian Trade Bank '
+        'ieķīlājis visu mantu',
+        'https://www.db.lv/zinas/elektroenergijas-razotajs-as-residence-energy-par-labu-meridian-trade-bank-iekilajis-visu-mantu-494452'],
+        ['Kā top? Ziemeļu Enkurs alus',
+        'https://www.db.lv/zinas/ka-top-ziemelu-enkurs-alus-494781'],
+        ['Twitter ienākumi pārlec miljardam',
+        'https://www.db.lv/zinas/twitter-ienakumi-parlec-miljardam-494804']]
 
 class TranslateList():
     '''Based on googletrans Translator, tailored for project needs. Works on uniform language list only. Takes args:
@@ -138,4 +184,7 @@ class TranslateList():
 
 
 if __name__ == '__main__':
-    pass
+    # pass
+    translator = TranslateList(test_headline_data, ['en'])
+    translated_list = translator.get_translated()
+    pprint(translated_list)
