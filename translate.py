@@ -1,6 +1,5 @@
 from utils import get_user_agent_str, get_working_proxy, USER_AGENTS
 from googletrans import Translator, LANGUAGES
-from time import sleep
 import langdetect
 import logging
 
@@ -17,7 +16,6 @@ class TranslateList():
         self.desired_lang_list = desired_lang_list
         self.expected_langs = ['en', 'et', 'lv', 'lt']
         self.detection_confidence = 0.9
-        self.sleep_time = 100
     
     def init_translator(self):
         '''get user agent, proxies & initialize Translator instance'''
@@ -53,9 +51,7 @@ class TranslateList():
                 continue
             if lang not in detected_langs:
                 detected_langs.append(lang)
-        if len(detected_langs) != 1:
-            logger.warning(f'Passed list contains more than one language. Detected languages contain: {detected_langs}')
-            raise Exception(f'Not processing this list. Language detection results: {detected_langs}')
+        logger.info(f'Returning first detected list language: {detected_langs[0]}, all detected languages in list: {detected_langs}')
         return detected_langs[0]
 
     def delete_member(self, idx):
@@ -76,7 +72,7 @@ class TranslateList():
                     return None
                 self.init_translator()
                 logger.debug('---Before requesting google API---')
-                translation_objs = self.translator.translate(list_to_translate, src=src_lang ,dest=trg_lang)
+                translation_objs = self.translator.translate(list_to_translate, src='auto' ,dest=trg_lang)
                 logger.debug('---After requesting google API---')
                 return translation_objs
             except:
@@ -97,7 +93,7 @@ class TranslateList():
             raise Exception
 
     def lists_same_length(self, src_list, translated_list):
-        '''simply compared lengths of passed lists'''
+        '''returns True if passed lists contain same length'''
         return len(src_list) == len(translated_list)
 
     def construct_src_size_output(self, src_list, translated_list):
@@ -119,7 +115,7 @@ class TranslateList():
         logger.info(f'Calculated total number characters in passed headlines list is {chars}')
 
     def get_translated(self):
-        '''if possible, returns translated list'''        
+        '''if possible, returns translated list'''
         if self.desired_langs_supported():
             self.headlines = self.strip_src_to_headings()
             self.get_total_chars(self.headlines)
