@@ -1,5 +1,5 @@
 from scrappers import VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper
-from utils import export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
+from utils import EmailHandler, export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
 from configparser import ConfigParser
 from translate import TranslateList
 from datetime import datetime
@@ -87,8 +87,8 @@ def main():
     logger.info('------Translation finished. Exporting data, saving to database, sending emails...')
     
     # Send email with new headlines in 'headlines_to_email' list:
-    # To be added...
-
+    send_email(headlines_to_email)
+    
     # Export translated, new headlines in separate csv:
     export_list_to_csv(headlines_to_email, OUTPUT_SENT_TODAY_FILE)
     
@@ -97,6 +97,23 @@ def main():
     
     logger.info(f'------------------------------------FINISHED------------------------------------')
 
+headlines_list_of_lists = [
+    ['Chill Vibe Old School Trance', 'https://www.youtube.com/watch?v=VTGVxcRt8OI'],
+    ['Sample Blog', 'http://www.sampleblog.com'],
+    ['Python documentation on emails', 'https://docs.python.org/3/library/email.message.html']
+    ]
+
+def output_template(headlines_list_of_lists):
+    email_client = EmailHandler(headlines_list=headlines_list_of_lists)
+    email_client.test_output_rendered_html()
+
+def send_email(headlines_list_of_lists):
+    email_client = EmailHandler(headlines_list=headlines_list_of_lists)
+    email_client.run()
 
 if __name__ == '__main__':
+    # print('You are about to receive an email hopefully')
+    # output_template(headlines_list_of_lists)
+    # send_email(headlines_list_of_lists)
+    # print('Aaaand, its time to test shit.')
     main()
