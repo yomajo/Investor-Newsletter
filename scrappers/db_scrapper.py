@@ -22,7 +22,7 @@ class DbScrapper(Scrapper):
                 cycle_output_as_list = [article_headline, article_url]
                 appendable_output_list.append(cycle_output_as_list)
         except:
-            logger.error('Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES')
+            logger.exception('Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES')
 
     def scrape_category(self, response):
         '''Collects links and article headlines within passed category response'''
