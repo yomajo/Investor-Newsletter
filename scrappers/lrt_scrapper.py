@@ -11,23 +11,11 @@ class LrtScrapper(Scrapper):
     - path to config file where class takes website categories suffix to url
     - relative output csv file path'''
         
-    def get_category_feature_article(self, content_container, appendable_output_list):
-        '''appends second arg with single list of feature article headline and url from passed content container'''
-        try:
-            feature_article_container = content_container.find('div', class_='section-news-rubric__top col-12')
-            feature_headline = feature_article_container.h3.a.text
-            feature_url_unval = feature_article_container.h3.a['href']
-            feature_url = self.validate_url(feature_url_unval)
-            cat_feature_list = [feature_headline, feature_url]
-            appendable_output_list.append(cat_feature_list)
-        except:
-            logger.error('Error getting featured article data in category. Check for WEBSITE STRUCTURE CHANGES')  
-        
     def get_category_articles(self, content_container, appendable_output_list):
         '''appends second arg with list of article headlines and urls from passed content container'''
         try:
-            all_category_divs = content_container.find('div', id='category_list')
-            article_containers = all_category_divs.findAll('h3', class_='news__title')
+            # all_category_divs = content_container.find('div', id='category_list')
+            article_containers = content_container.findAll('h3', class_='news__title')
             for article in article_containers:
                 article_headline = article.a.text.strip()
                 article_url_unval = article.a['href']
@@ -35,15 +23,14 @@ class LrtScrapper(Scrapper):
                 cycle_output_as_list = [article_headline, article_url]
                 appendable_output_list.append(cycle_output_as_list)
         except:
-            logger.error('Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES')
+            logger.exception('Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES')
 
     def scrape_category(self, response):
         '''Collects links and article headlines within passed category response'''
         if response != None:
             self.category_results = []
             # Pass corresponding html element and CSS class to  
-            self.content_container = self.get_content_container(response, 'div', 'section-news-rubric__grid row')
-            self.get_category_feature_article(self.content_container, self.category_results)
+            self.content_container = self.get_content_container(response, 'div', 'news-list')
             self.get_category_articles(self.content_container, self.category_results)
         else:
             logger.error('Server did not respond well')
