@@ -1,5 +1,7 @@
-from random import choice, randint
+from configparser import ConfigParser
+from random import choice, randint, sample
 from bs4 import BeautifulSoup
+from datetime import date
 from time import sleep
 import requests
 import logging
@@ -14,6 +16,20 @@ TEST_IP_URL = 'https://www.httpbin.org/ip'
 PROXY_SOURCE_URL = 'https://free-proxy-list.net'
 TEST_IP_URL = 'https://www.httpbin.org/ip'
 
+######### READING CONFIG ######### 
+
+def get_config_section_values(config_file_path, section_name):
+    '''returns section in config file values as list'''
+    config = ConfigParser()
+    config.read(config_file_path)
+    config_section_data = config.items(section_name)
+    return [value for _, value in config_section_data]
+
+def get_config_translate_option_bool(config_file_path:str):
+    '''returs True if option to translate is set in config file, False otherwise'''
+    translate_headlines_config_val = get_config_section_values(config_file_path, 'BOOLEAN OPTIONS')[0]
+    return False if translate_headlines_config_val != 'yes' else True
+
 
 ######### FUNCTION FOR PICKING RANDOM USER AGENT FOR REQUESTS #########
 
@@ -26,6 +42,41 @@ def get_user_agent_str(user_agents_list):
     '''returns ready to use str in requests'''
     return choice(user_agents_list)
 
+######### FUNCTIONS FOR IMAGE DOWNLOAD #########
+
+def download_img(image_url:str, user_agent:dict) -> str:
+    '''saves img path in project folder data/img/<img_path> returns img_path'''
+    img_folder = os.path.join(os.getcwd(), 'data', 'img')
+    img_path = os.path.join(img_folder, get_img_name(image_url))
+    try:
+        r = requests.get(image_url, headers=user_agent, timeout=10, stream=True)
+        with open(img_path, 'wb') as f:
+            for chunk in r.iter_content(1024):
+                f.write(chunk)
+    except FileNotFoundError:
+        logger.critical(f'Failed to save images, dirs not found: {img_path}')
+        img_path = '#N/A'
+    except:
+        logger.warning(f'Unexpected error when saving image. img_path: {img_path}, url: {image_url}. Returning NA for img path')
+        img_path = '#N/A'
+    return img_path
+
+def get_img_name(url) -> str:
+    '''returns full img name with extension. Example: 210121gidzsytHma.jpg'''
+    random_str = get_ten_alphachars(url)
+    date_str = date.today().strftime('%y%m%d')
+    return date_str + random_str + '.jpg'
+
+def get_ten_alphachars(url:str) -> str:
+    '''returns 10 random abc characters from url'''
+    ten_alpha_chs = ''
+    list_of_shuffled_chars = sample(url, k=len(url))
+    for ch in list_of_shuffled_chars:
+        if ch.isalpha():
+            ten_alpha_chs += ch
+        if len(ten_alpha_chs) > 9:
+            break
+    return ten_alpha_chs
 
 ######### FUNCTIONS FOR ACTIONS WITH CSV FILES #########
 
@@ -54,7 +105,7 @@ def get_headline_urls_in_db(csvfile_path):
                 try:
                     urls_in_db.append(headline_data[1])
                 except:
-                    logging.exception(f'Could not decode {headline_data}, skipping line...')
+                    logger.exception(f'Could not decode {headline_data}, skipping line...')
                     continue
             # urls_in_db = [headline_data[1] for headline_data in csv_data]
         return urls_in_db
