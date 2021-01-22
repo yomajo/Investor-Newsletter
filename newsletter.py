@@ -1,10 +1,12 @@
 from scrappers import VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper
-from utils import EmailHandler, export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db
-from configparser import ConfigParser
+from utils import EmailHandler, export_list_to_csv, get_headline_urls_in_db, get_headlines_not_in_db, get_config_section_values, get_config_translate_option_bool
 from translate import TranslateList
 from datetime import datetime
 import logging.handlers
 import logging
+
+from pprint import pprint
+
 
 # LOGGING CONFIG:
 logger = logging.getLogger()
@@ -17,7 +19,7 @@ file_handler.setFormatter(formatter)
 # Additional Console logging
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-stream_handler.setLevel(logging.DEBUG)
+stream_handler.setLevel(logging.INFO)
 
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
@@ -28,14 +30,11 @@ OUTPUT_HEADLINES_FILE = 'Output/Headlines_data.csv'
 FORMATTED_TIMESTAMP = datetime.today().strftime(r'%Y.%m.%d %H.%M')
 OUTPUT_SENT_TODAY_FILE = f'Output/Headlines_sent {FORMATTED_TIMESTAMP}.csv'
 SCRAPPERS = [VzScrapper, LrtScrapper, ERRScrapper, PostimeesScrapper, BalticTimesScrapper, DbScrapper]
+TRANSLATE = get_config_translate_option_bool(CONFIG_FILE)
 
 
-def get_config_section_values(config_file_path, section_name):
-    '''returns section in config file values as list'''
-    config = ConfigParser()
-    config.read(config_file_path)
-    config_section_data = config.items(section_name)
-    return [value for _, value in config_section_data]
+
+
 
 def scrape_websites_headlines_to_list(base_urls, scrappers_list):
     '''returns a list of website specific lists of lists headline data. Args: 
@@ -45,8 +44,10 @@ def scrape_websites_headlines_to_list(base_urls, scrappers_list):
     for idx, ScrapperClass in enumerate(scrappers_list):
         try:
             scrapper_inst = ScrapperClass(base_urls[idx], CONFIG_FILE)
-            headlines_data = scrapper_inst.get_website_headlines_as_list()
+            headlines_data = scrapper_inst.get_website_data()
             raw_scrappers_output.append(headlines_data)
+
+            break
         except:
             logger.exception(f'Error occured while scrapping {base_urls[idx]} in {ScrapperClass.__name__}, proceeding to next website...')
             continue
@@ -56,7 +57,8 @@ def main():
     logger.info(f'------------------------------------FRESH START ON {FORMATTED_TIMESTAMP}------------------------------------')
     base_urls = get_config_section_values(CONFIG_FILE, 'BASE_URLS')
     desired_langs = get_config_section_values(CONFIG_FILE, 'LANGUAGES')
-    urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
+    
+    # urls_in_db = get_headline_urls_in_db(OUTPUT_HEADLINES_FILE) 
 
     # Scrape and output results into raw_scrappers_output list for each website
     raw_scrappers_output = scrape_websites_headlines_to_list(base_urls, SCRAPPERS)
@@ -72,7 +74,8 @@ def main():
         scrapped_new_headlines = get_headlines_not_in_db(scrapped_list, urls_in_db)
         logger.info(f'Scrapped {len(scrapped_list)} headlines from {base_urls[idx]}. New headlines found: {len(scrapped_new_headlines)}')
         logger.debug(f'{len(scrapped_new_headlines)} new headlines from ---{base_urls[idx]}--- being passed to TranslateList')
-        if scrapped_new_headlines:    
+        
+        if TRANSLATE and scrapped_new_headlines:    
             translator = TranslateList(scrapped_new_headlines, desired_langs)
             try:
                 translated_headlines_data = translator.get_translated()
@@ -111,9 +114,21 @@ def send_email(headlines_list_of_lists):
     email_client = EmailHandler(headlines_list=headlines_list_of_lists)
     email_client.run()
 
+
+def test_specific_scrapper_with_pics_saving(ScrapperClass, idx_in_config:int):
+    base_urls = get_config_section_values(CONFIG_FILE, 'BASE_URLS')    
+    scrapper = ScrapperClass(base_urls[idx_in_config], CONFIG_FILE)
+
+    headlines_data = scrapper.get_website_data()
+    print(f'Got this much from scrapper: {len(headlines_data)}')
+    if input(f'Want to print {len(headlines_data)} headlines?. Type > y < if yes') == 'y':
+        pprint(headlines_data)
+    
+
 if __name__ == '__main__':
     # print('You are about to receive an email hopefully')
     # output_template(headlines_list_of_lists)
     # send_email(headlines_list_of_lists)
     # print('Aaaand, its time to test shit.')
-    main()
+    # main()
+    test_specific_scrapper_with_pics_saving(LrtScrapper, 1)
