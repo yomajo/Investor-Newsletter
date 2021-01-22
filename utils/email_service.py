@@ -1,7 +1,7 @@
 from jinja2 import Environment, Template, FileSystemLoader
 from email.message import EmailMessage
-from smtplib import SMTP_SSL
 from datetime import datetime
+from smtplib import SMTP_SSL
 import os
 
 
@@ -92,4 +92,6 @@ class EmailHandler():
 
 
 if __name__ == '__main__':
+    # mail_service = EmailHandler()
+    # mail_service.run()
     pass
