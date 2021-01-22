@@ -1,20 +1,20 @@
-from bs4 import BeautifulSoup
-from configparser import ConfigParser
-from time import sleep
-from random import randint
-from urllib.parse import urljoin
-import os
-import requests
-import lxml
-import logging
-from utils import get_user_agent_dict, get_working_proxy
+from utils import get_user_agent_dict, download_img
 from utils import USER_AGENTS
+from configparser import ConfigParser
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
+from random import randint
+from time import sleep
+import requests
+import logging
+import lxml
+import os
 
 # Initializing logging in module
 logger = logging.getLogger(__name__)
 
 class Scrapper():
-    '''Generic Scrapper class indented to inherit from for each specific website. Instance arguments:
+    '''Generic Scrapper class indented to inherit from for each specific website scrapping class. Instance arguments:
     - base website
     - path to config file where class takes website categories suffix to url
     
@@ -24,108 +24,161 @@ class Scrapper():
     - get_category_feature_article
     - get_category_articles
     
-    Output scrape results as list with --> .get_website_headlines_as_list()
-    '''
+    Output unque scrape results as list of dicts with --> .get_website_data()
+    urls are collected to self.unique_urls_set. Only new urls and rest of data
+    
+    returns a list (self.website_data) of headline data dicts. Example of single headline data:
+            headline_data_dict = {
+                    'headline':article_headline,
+                    'category':category,
+                    'url':article_url,
+                    'img_url':article_img_url,
+                    'img_path':img_path}'''
 
     def __init__(self, base_url, config_file):
         self.base_url = base_url
         self.config_file = config_file
         self.user_agent = get_user_agent_dict(USER_AGENTS)
         self.encoding = self.get_website_encoding()
-
-    def get_categs_list(self):
-        '''return list of categories (string as part of url)'''
-        categs = []
-        # Read contents under class named section in config.ini
-        config = ConfigParser()
-        config.read(self.config_file)
-        logger.info(f'Reading config file {self.config_file} contents from section: {self.__class__.__name__.upper()}')        
-        raw_cls_config = config.items(f'{self.__class__.__name__.upper()}')
-        for _, cat in raw_cls_config:
-            categs.append(cat)
-        return categs
+        self.website_data = []
+        self.unique_urls_set = set()
 
     def get_website_encoding(self):
         '''every website uses charset utf-8 except for vz.lt; returning encoding based on cls name'''
         if 'VZ' in self.__class__.__name__.upper():
             return 'Windows-1257'
         return 'utf-8'
-    
+            
     def get_urls(self):
-        '''returns ready urls'''
+        '''returns ready category specific urls to scrape from'''
         self.categs = self.get_categs_list()
         self.urls_list = []
         for cat in self.categs:
             self.urls_list.append(self.base_url + cat) 
         return self.urls_list
 
-    def get_response(self, url):
-        '''checks passsed url and returns response if available'''
-        r = requests.get(url, headers=self.user_agent, timeout=10)
-        if r.status_code == 200:
-            return r
-        else:
-            logger.exception(f'Server did not respond well. Response code: {r.status_code} while accessing {url}')
-            raise Exception
+    def get_categs_list(self):
+        '''return list of categories (string as part of url)'''
+        categs = []
+        class_name = self.__class__.__name__.upper()
+        config = ConfigParser()
+        config.read(self.config_file)
+        logger.info(f'Reading config file {self.config_file} contents from section: {class_name}')        
+        # Read contents under class named section in config.ini
+        raw_cls_config = config.items(class_name)
+        for _, cat in raw_cls_config:
+            categs.append(cat)
+        return categs
 
-    def scrape_category(self, response):
-        '''---OVERWRITE WHEN INHERITING---'''
-        '''collects links and article headlines within passed category response'''
-        self.category_results = []
-        # # Pass corresponding html element and CSS class to
-        # self.content_container = self.get_content_container(response, 'HTML_ELEMENT', 'CSS_CLASS')
-        # feature_article_data = get_category_feature_article(self.content_container)
-        # self.category_results.append(feature_article_data)
-        # get_category_articles(self.content_container, self.category_results)
-
-    def get_content_container(self, response, html_element, css_class):
-        '''---OVERWRITE WHEN INHERITING---'''
-        '''returns main articles holding container of html soup object'''
-        self.soup = BeautifulSoup(response.content, 'lxml', from_encoding=self.encoding)
-        self.content_container = self.soup.find(html_element, class_=css_class)
-        return self.content_container
-    
-    def get_category_feature_article(self, content_container):
-        '''---OVERWRITE WHEN INHERITING---'''
-        '''appends second arg with single list of feature article headline and url from passed content container'''
-        pass
-
-    def get_category_articles(self, content_container, appendable_output_list):
-        '''---OVERWRITE WHEN INHERITING---'''
-        '''appends second arg with list of article headlines and urls from passed content container'''
-        pass
-
-    def validate_url(self, url):
+    def validate_url(self, url:str) -> str:
         '''converts relative url to absolute if neccesarry. self.base_url neccessary'''
         if url.startswith('/'):
             return urljoin(self.base_url, url)
         else:
             return url
 
-    def get_website_headlines_as_list(self):
-        '''iterates over category urls, scrapes data from each category, returns a list of lists of unique headlines and urls'''
+    def get_response(self, url) -> object:
+        '''checks passsed url and returns response if available'''
+        r = requests.get(url, headers=self.user_agent, timeout=10)
+        if r.status_code == 200:
+            return r
+        else:
+            logger.exception(f'Server did not respond well. Response code: {r.status_code} while accessing {url}')
+            raise ConnectionError('Server response not 200. Check log exception for status code and url')
+
+    def scrape_category(self, response:object, category:str):
+        '''---OVERWRITE WHEN INHERITING---'''
+        '''Collects headline data to cls variable self.website_data for passed response obj (category specific)'''
+        if response != None:
+            content_container = self.get_content_container(response, 'div', 'main')
+            self.get_category_feature_article(content_container, category)
+            self.get_category_articles(content_container, category)
+        else:
+            logger.error('Server did not respond well')
+
+    def get_content_container(self, response:object, html_element:str, css_class:str) -> object:
+        '''---OVERWRITE WHEN INHERITING---'''
+        '''returns main html container (soup object) holding articles'''
+        soup = BeautifulSoup(response.content, 'lxml', from_encoding=self.encoding)
+        content_container = soup.find(html_element, class_=css_class)
+        return content_container
+    
+    def get_category_feature_article(self, content_container:object, category:str):
+        '''---OVERWRITE WHEN INHERITING---'''
+        '''scrapes feature article data within category content_container if url not yet in self.unique_urls_set.
+        Appends headline data dict to self.website_data list'''
+        # try:
+        #     # article url
+        #     feature_article_url_unval = content_container.find('div', class_='main-article').h2.a['href']
+        #     feature_article_url = self.validate_url(feature_article_url_unval)
+            
+        #     if feature_article_url not in self.unique_urls_set:
+        #         self.unique_urls_set.add(feature_article_url)
+        #         # headline
+        #         feature_article_headline = content_container.find('div', class_='main-article').h2.a.text
+                
+        #         # article img url
+        #         feature_article_img_url = self.validate_url(content_container.img['src'])
+        #         img_path = download_img(feature_article_img_url, self.user_agent)
+        #         headline_data_dict = {
+        #                         'headline':feature_article_headline,
+        #                         'category':category,
+        #                         'url':feature_article_url,
+        #                         'img_url':feature_article_img_url,
+        #                         'img_path':img_path}
+        #         self.website_data.append(headline_data_dict)
+        # except:
+        #     logger.exception('Error getting featured article data in category. Check for WEBSITE STRUCTURE CHANGES')
+        pass
+
+    def get_category_articles(self, content_container:object, category:str):
+        '''---OVERWRITE WHEN INHERITING---'''
+        '''scrapes articles data within category content_container if urls not yet in self.unique_urls_set.
+        Appends headline data dicts to self.website_data list'''
+        # try:    
+        #     all_category_divs = content_container.findAll('div', class_='article')
+        #     for article_div in all_category_divs:
+        #         # article url
+        #         article_url_unval = article_div.h2.a['href']
+        #         article_url = self.validate_url(article_url_unval)
+                
+        #         if article_url not in self.unique_urls_set:
+        #             self.unique_urls_set.add(article_url)
+        #             # headline
+        #             article_headline = article_div.h2.a.text.strip()    
+                    
+        #             # article img url
+        #             try:
+        #                 img_url = self.validate_url(article_div.img['src'])
+        #                 img_path = download_img(img_url, self.user_agent)
+        #             except TypeError:
+        #                 logger.debug(f'Could not get img url for this article: {article_url} Returning \'#N/A\'')
+        #                 img_url = img_path = '#N/A'
+        #             headline_data_dict = {
+        #                         'headline':article_headline,
+        #                         'category':category,
+        #                         'url':article_url,
+        #                         'img_url':img_url,
+        #                         'img_path':img_path}
+        #             self.website_data.append(headline_data_dict)
+        # except:
+        #     logger.exception('Error grabbing category articles. Check for WEBSITE STRUCTURE CHANGES')
+        pass
+        
+    def get_website_data(self) -> list:
+        '''iterates over category urls, scrapes data from each category, returns a list of dicts of unique (cls/website/scrape run scope)
+        headline data'''
         self.get_urls()
-        self.unique_headlines_list = []
         for idx, url in enumerate(self.urls_list):
-            logger.info(f'New request for category: {self.categs[idx]}')
+            category = self.categs[idx]
+            logger.info(f'New request for category: {category}')
             response = self.get_response(url)
             logger.info(f'Server response time: {response.elapsed.total_seconds()}')
-            
-            self.scrape_category(response)
-            self.category_to_output_list(self.category_results, self.unique_headlines_list)
-
+            self.scrape_category(response, category)
             logging.info('sleeping before jumping to next category... ZZzz...')
             sleep(randint(10, 50)/10)
-        return self.unique_headlines_list
-
-    def category_to_output_list(self, category_list, unique_records):
-        '''takes input arg of category-level scrape results and transfers unique records to output list. Returns it
-        (prevents same entry from different categories)'''
-        logger.info('Writing category headlines infomation to common variable')
-        for headline_info in category_list:
-            if headline_info not in unique_records:
-                unique_records.append(headline_info)
-        return unique_records
+        logger.info(f'Returning {len(self.website_data)} headlines from {self.__class__.__name__}')
+        return self.website_data
 
 
 if  __name__ == '__main__':
