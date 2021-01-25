@@ -121,7 +121,7 @@ def test_specific_scrapper_with_pics_saving(ScrapperClass, idx_in_config:int):
 
     headlines_data = scrapper.get_website_data()
     print(f'Got this much from scrapper: {len(headlines_data)}')
-    if input(f'Want to print {len(headlines_data)} headlines?. Type > y < if yes') == 'y':
+    if input(f'Want to print {len(headlines_data)} headlines?. Type > y < if yes: ') == 'y':
         pprint(headlines_data)
     
 
@@ -131,4 +131,4 @@ if __name__ == '__main__':
     # send_email(headlines_list_of_lists)
     # print('Aaaand, its time to test shit.')
     # main()
-    test_specific_scrapper_with_pics_saving(LrtScrapper, 1)
+    test_specific_scrapper_with_pics_saving(ERRScrapper, 2)
