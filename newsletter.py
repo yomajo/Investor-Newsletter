@@ -131,4 +131,4 @@ if __name__ == '__main__':
     # send_email(headlines_list_of_lists)
     # print('Aaaand, its time to test shit.')
     # main()
-    test_specific_scrapper_with_pics_saving(ERRScrapper, 2)
+    test_specific_scrapper_with_pics_saving(PostimeesScrapper, 3)
