@@ -56,8 +56,8 @@ def download_img(image_url:str, user_agent:dict) -> str:
     except FileNotFoundError:
         logger.critical(f'Failed to save images, dirs not found: {img_path}')
         img_path = '#N/A'
-    except:
-        logger.warning(f'Unexpected error when saving image. img_path: {img_path}, url: {image_url}. Returning NA for img path')
+    except Exception as e:
+        logger.warning(f'Unexpected err: {e} while saving image. img_path: {img_path}, url: {image_url}. Returning NA for img path')
         img_path = '#N/A'
     return img_path
 
