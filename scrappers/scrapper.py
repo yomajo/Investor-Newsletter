@@ -49,26 +49,25 @@ class Scrapper():
             return 'Windows-1257'
         return 'utf-8'
             
-    def get_urls(self):
-        '''returns ready category specific urls to scrape from'''
-        self.categs = self.get_categs_list()
-        self.urls_list = []
-        for cat in self.categs:
-            self.urls_list.append(self.base_url + cat) 
-        return self.urls_list
+    def get_urls(self) -> dict:
+        '''returns ready [category] = category_url dict of urls to scrape from'''
+        categ_url_dict = self.get_categs_dict()
+        for cat in categ_url_dict.keys():
+            categ_url_dict[cat] = self.base_url + categ_url_dict[cat] 
+        return categ_url_dict
 
-    def get_categs_list(self):
-        '''return list of categories (string as part of url)'''
-        categs = []
+    def get_categs_dict(self) -> dict:
+        '''return dict of category - category sub url pairs (dict value  as part of url string)'''
+        cat_url_dict = {}
         class_name = self.__class__.__name__.upper()
         config = ConfigParser()
         config.read(self.config_file)
         logger.info(f'Reading config file {self.config_file} contents from section: {class_name}')        
         # Read contents under class named section in config.ini
         raw_cls_config = config.items(class_name)
-        for _, cat in raw_cls_config:
-            categs.append(cat)
-        return categs
+        for cat, cat_suburl in raw_cls_config:
+            cat_url_dict[cat] = cat_suburl
+        return cat_url_dict
 
     def validate_url(self, url:str) -> str:
         '''converts relative url to absolute if neccesarry. self.base_url neccessary'''
@@ -168,11 +167,10 @@ class Scrapper():
     def get_website_data(self) -> list:
         '''iterates over category urls, scrapes data from each category, returns a list of dicts of unique (cls/website/scrape run scope)
         headline data'''
-        self.get_urls()
-        for idx, url in enumerate(self.urls_list):
-            category = self.categs[idx]
-            logger.info(f'New request for category: {category}')
-            response = self.get_response(url)
+        category_urls = self.get_urls()
+        for category, category_url in category_urls.items():
+            logger.info(f'New request for category: {category}, url: {category_url}')
+            response = self.get_response(category_url)
             logger.info(f'Server response time: {response.elapsed.total_seconds()}')
             self.scrape_category(response, category)
             logging.info('sleeping before jumping to next category... ZZzz...')
